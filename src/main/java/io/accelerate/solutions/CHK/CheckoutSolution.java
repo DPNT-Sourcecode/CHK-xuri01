@@ -9,9 +9,9 @@ public class CheckoutSolution {
 
     private static final Map<String, Integer> unitPrices = new HashMap<>() {{
         put("A", 50);
-                put("B", 30);
-                put("C", 20);
-                put("D", 15);
+        put("B", 30);
+        put("C", 20);
+        put("D", 15);
     }};
 
     private static final Map<String, int[]> offers = new HashMap<>() {{
@@ -21,6 +21,8 @@ public class CheckoutSolution {
 
 
     public Integer checkout(String items) {
+
+        int total = 0;
 
         if (items == null || items.isEmpty()) return -1;
         Map<String, Integer> countMap = new HashMap<>();
@@ -51,6 +53,7 @@ public class CheckoutSolution {
 
             return total;
         }
+    }
 
 
 
