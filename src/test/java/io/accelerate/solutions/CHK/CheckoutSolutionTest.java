@@ -38,13 +38,19 @@ class CheckoutSolutionTest {
     }
 
     @Test
-    public void checkoutEnptyOrNull(){
+    public void checkoutEmptyOrNull(){
         assertEquals(0, checkoutSolution.checkout(""), "Empty String should cost 0 ");
         assertEquals(0, checkoutSolution.checkout(null), "Null String should cost 0 ");
 
+    }
+
+    @Test
+    public void checkoutSpecialOffers(){
+        assertEquals(130, checkoutSolution.checkout("AAA"));
 
     }
 
 
 }
+
 
