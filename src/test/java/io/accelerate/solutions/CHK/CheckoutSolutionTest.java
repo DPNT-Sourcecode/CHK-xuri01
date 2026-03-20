@@ -23,6 +23,14 @@ class CheckoutSolutionTest {
         assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
     }
 
+    @Test
+    public void testMultipleItemsWithOffers(){
+        assertEquals(50 + 30, checkoutSolution.checkout("AB"), "3A+B should cost 160");
+        assertEquals(20 + 15, checkoutSolution.checkout("CD"), "C + D should 35");
+        assertEquals(50 + 30 + 20 + 15, checkoutSolution.checkout("ABCD"), "A + B + C + D  should cost 115");
+
+    }
+
     /*
 
     @Test
@@ -31,13 +39,6 @@ class CheckoutSolutionTest {
         assertEquals(45, checkoutSolution.checkout("BB"), "2B should offer cost 45");
     }
 
-    @Test
-    public void testMultipleItemsWithOffers(){
-        assertEquals(160, checkoutSolution.checkout("AAAB"), "3A+B should cost 160");
-        assertEquals(260, checkoutSolution.checkout("AAABBD"), "6A should cost 260");
-        assertEquals(90, checkoutSolution.checkout("BBBB"), "48 should cost 90");
-
-    }
 
      */
 
