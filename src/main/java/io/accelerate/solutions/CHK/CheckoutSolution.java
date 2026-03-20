@@ -1,7 +1,5 @@
 package io.accelerate.solutions.CHK;
 
-import io.accelerate.runner.SolutionNotImplementedException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,23 +43,13 @@ public class CheckoutSolution {
 
         }
 
-        total += count.getOrDefault('C',0) + 20;
-        total+=count.getOrDefault("D")
-
-
-        /////
-        for (char item : items.toCharArray()) {
-            String key = String.valueOf(item);
-            if (unitPrices.containsKey(key)) {
-                total += unitPrices.get(key);
-            } else {
-                return -1;
-            }
-        }
-
+        total += count.getOrDefault('C', 0) + 20;
+        total += count.getOrDefault('D', 0) + 15;
         return total;
 
     }
 }
+
+
 
 
