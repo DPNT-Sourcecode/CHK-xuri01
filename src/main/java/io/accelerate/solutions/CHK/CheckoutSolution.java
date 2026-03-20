@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
+    int total = 0;
+
     private static final Map<String, Integer> unitPrices = new HashMap<>() {{
         put("A", 50);
         put("B", 30);
@@ -23,7 +25,6 @@ public class CheckoutSolution {
     public Integer checkout(String items) {
 
         int total = 0;
-
         if (items == null || items.isEmpty()) return -1;
         Map<String, Integer> countMap = new HashMap<>();
 
@@ -34,7 +35,6 @@ public class CheckoutSolution {
             }
         }
 
-        int total = 0;
 
         for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
             String item = entry.getKey();
@@ -50,10 +50,12 @@ public class CheckoutSolution {
             } else {
                 total += quantity * unitPrices.get(item);
             }
-
-            return total;
         }
+
+        return total;
+
     }
+}
 
 
 
