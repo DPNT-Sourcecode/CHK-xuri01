@@ -25,7 +25,6 @@ public class CheckoutSolution {
     public Integer checkout(String items) {
 
         if (items == null || items.isEmpty()) return 0;
-
         Map<String, Integer> counts = new HashMap<>();
 
         int total = 0;
@@ -43,4 +42,5 @@ public class CheckoutSolution {
 
     }
 }
+
 
