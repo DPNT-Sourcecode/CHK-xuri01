@@ -28,6 +28,17 @@ public class CheckoutSolution {
 
         Map<String, Integer> counts = new HashMap<>();
 
+        int total = 0;
+
+        for(char item : items.toCharArray()){
+            String key = String.valueOf(item);
+            if(unitPrices.containsKey(key)){
+                total += unitPrices.get(key);
+            }else{
+                
+            }
+        }
+
         for (char c : items.toCharArray()) {
             String item = String.valueOf(c);
             if (!unitPrices.containsKey(item)) {
@@ -58,4 +69,5 @@ public class CheckoutSolution {
 
     }
 }
+
 
