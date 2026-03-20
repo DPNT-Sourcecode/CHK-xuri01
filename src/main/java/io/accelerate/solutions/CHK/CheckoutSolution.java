@@ -27,31 +27,34 @@ public class CheckoutSolution {
         if (items == null || items.isEmpty()) return 0;
         Map<String, Integer> count = new HashMap<>();
 
-        for(char c: items.toCharArray()){
+        for (char c : items.toCharArray()) {
             count.put(String.valueOf(c), count.getOrDefault(c, 0) + 1);
         }
         int total = 0;
 
-        if(count.containsKey('A')){
+        if (count.containsKey('A')) {
             int aCount = count.get('A');
-            total+=(aCount/3) * 130;
-            total+=(aCount %3) * 50;
+            total += (aCount / 3) * 130;
+            total += (aCount % 3) * 50;
         }
 
-        if(count.containsKey('B')){
+        if (count.containsKey('B')) {
             int bCount = count.get('B');
             total += (bCount / 2) * 45;
-            total+=(bCount %2) * 30;
+            total += (bCount % 2) * 30;
 
         }
+
+        total += count.getOrDefault('C',0) + 20;
+        total+=count.getOrDefault(0, )
 
 
         /////
-        for(char item : items.toCharArray()){
+        for (char item : items.toCharArray()) {
             String key = String.valueOf(item);
-            if(unitPrices.containsKey(key)){
+            if (unitPrices.containsKey(key)) {
                 total += unitPrices.get(key);
-            }else{
+            } else {
                 return -1;
             }
         }
@@ -60,6 +63,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
