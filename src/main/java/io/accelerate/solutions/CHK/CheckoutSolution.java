@@ -9,7 +9,7 @@ public class CheckoutSolution {
         int countB = 0;
         int countC = 0;
         int countD = 0;
-
+        int total = 0;
         for (char sku : skus.toCharArray()) {
             switch (sku) {
                 case 'A':
@@ -27,16 +27,16 @@ public class CheckoutSolution {
                 default:
                     return -1;
             }
-
-            int total = 0;
-            total += (countA / 3) * 130 + (countA % 3) * 50;
-            total += (countB / 2) * 45 + (countB % 2) * 30;
-            total += countC * 20;
-            total += countD * 15;
         }
+
+        total += (countA / 3) * 130 + (countA % 3) * 50;
+        total += (countB / 2) * 45 + (countB % 2) * 30;
+        total += countC * 20;
+        total += countD * 15;
 
 
         return null;
     }
 }
+
 
