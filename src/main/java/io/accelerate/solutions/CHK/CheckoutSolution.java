@@ -21,11 +21,22 @@ public class CheckoutSolution {
 
 
 
-    public Integer checkout(String skus) {
-        if (skus == null || skus.isEmpty()) return -1;
+    public Integer checkout(String items) {
+        if (items == null || items.isEmpty()) return -1;
         Map<String, Integer> countMap = new HashMap<>();
 
-        for(char c: items.toChar)
+        for(char c: items.toCharArray()){
+            String item = String.valueOf(c);
+            if(!unitPrices.containsKey(item)){
+                countMap.put(item, countMap.getOrDefault(item, 0)+1)
+            }
+        }
+
+        int total =0;
+
+        for(Map.entry())
+
+
         int countA = 0; int countB = 0; int countC = 0; int countD = 0;
         for (char sku : skus.toCharArray()) {
             switch (sku) {
@@ -54,6 +65,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
