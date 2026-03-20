@@ -7,7 +7,7 @@ public class CheckoutSolution {
 
     int total = 0;
 
-    private static final Map<String, Integer> unitPrices = new HashMap<>() {{
+    private static final Map<String, Integer> prices = new HashMap<>() {{
         put("A", 50);
         put("B", 30);
         put("C", 20);
@@ -26,6 +26,9 @@ public class CheckoutSolution {
         Map<String, Integer> count = new HashMap<>();
 
         for (char c : items.toCharArray()) {
+            if(prices.containsKey(c)){
+                return -1;
+            }
             count.put(String.valueOf(c), count.getOrDefault(c, 0) + 1);
         }
         int total = 0;
@@ -49,5 +52,6 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
