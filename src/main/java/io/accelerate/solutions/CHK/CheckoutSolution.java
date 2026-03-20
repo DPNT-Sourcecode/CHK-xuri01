@@ -40,7 +40,7 @@ public class CheckoutSolution {
         for (Map.Entry<String, Integer> entry : counts.entrySet()) {
             String sku = entry.getKey();
             int quantity = entry.getValue();
-            int price = unitPrices.
+            int price = unitPrices.get(sku);
 
             if (offers.containsKey(sku)) {
                 int[] offer = offers.get(sku);
@@ -48,9 +48,9 @@ public class CheckoutSolution {
                 int offerPrice = offer[1];
 
                 total += (quantity / offerQuantity) * offerPrice;
-                total += (quantity % offerQuantity) * unitPrices.get(item);
+                total += (quantity % offerQuantity) * price;
             } else {
-                total += quantity * unitPrices.get(item);
+                total += quantity * price;
             }
         }
 
@@ -58,6 +58,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
