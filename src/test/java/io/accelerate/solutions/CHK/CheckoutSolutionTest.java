@@ -1,5 +1,7 @@
 package io.accelerate.solutions.CHK;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -9,14 +11,14 @@ class CheckoutSolutionTest {
 
     private CheckoutSolution checkoutSolution;
 
+    @BeforeEach
     public void setUp(){
         checkoutSolution = new CheckoutSolution();
     }
 
     @Test
-    public void checkoutValidInputs(){
-        var total = checkoutSolution.checkout("A,B,C,D");
-        assertThat(total, 10);
+    public void checkoutSingleItems(){
+        Assertions.assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
     }
 
 }
