@@ -4,6 +4,9 @@ import io.accelerate.runner.SolutionNotImplementedException;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        return 15;
+        if(skus == null) return -1;
+
+        return null;
     }
 }
+
