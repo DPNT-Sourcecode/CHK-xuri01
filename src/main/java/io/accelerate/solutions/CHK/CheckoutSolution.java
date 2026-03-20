@@ -39,7 +39,10 @@ public class CheckoutSolution {
         }
 
         if(count.containsKey('B')){
-            int bCount
+            int bCount = count.get('B');
+            total += (bCount / 2) * 45;
+            total+=(bCount %2) * 30;
+
         }
 
 
@@ -57,6 +60,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
