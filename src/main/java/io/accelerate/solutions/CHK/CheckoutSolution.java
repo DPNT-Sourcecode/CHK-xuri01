@@ -14,7 +14,9 @@ public class CheckoutSolution {
         put("D", 15)
     }};
 
-    private static final Map<String, int >
+    private static final Map<String, int []> offers = new HashMap<>(){{
+        put("A", new int[]{3, 130})
+    }}
 
     public Integer checkout(String skus) {
         if (skus == null) return -1;
@@ -46,4 +48,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
