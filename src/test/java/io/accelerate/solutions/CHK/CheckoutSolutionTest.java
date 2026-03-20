@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class CheckoutSolutionTest {
 
     private CheckoutSolution checkoutSolution;
@@ -15,14 +17,18 @@ class CheckoutSolutionTest {
 
     @Test
     public void checkoutSingleItems(){
-        Assertions.assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
-        Assertions.assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
-        Assertions.assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
-        Assertions.assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
+        assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
+        assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
+        assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
+        assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
     }
 
-    public testSpecialOffers(){
-        
+    @Test
+    public void testSpecialOffers(){
+        assertEquals(130, checkoutSolution.checkout("AAA"), "3A offer should cost 130");
+        assertEquals(45, checkoutSolution.checkout("BB"), "2B should offer cost 45");
+
+
     }
 
 }
