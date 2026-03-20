@@ -26,12 +26,18 @@ public class CheckoutSolution {
         Map<String, Integer> count = new HashMap<>();
 
         for (char c : items.toCharArray()) {
-            if(prices.containsKey(c)){
+            if (prices.containsKey(c)) {
                 return -1;
             }
             count.put(String.valueOf(c), count.getOrDefault(c, 0) + 1);
         }
         int total = 0;
+
+        int countA = count.getOrDefault('A', 0);
+        total += (countA / 3) * 130 + (countA % 3) * 30;
+
+        int countB = count.getOrDefault('B', 0);
+        total+=(countB/2) * 
 
         if (count.containsKey('A')) {
             int aCount = count.get('A');
@@ -52,6 +58,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
