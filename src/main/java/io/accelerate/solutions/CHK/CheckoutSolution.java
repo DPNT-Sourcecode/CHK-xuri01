@@ -40,7 +40,12 @@ public class CheckoutSolution {
             if(offers.containsKey(item)){
                 int[] offer  = offers.get(item);
                 int offerQuantity = offer[0];
-                
+                int offerPrice = offer[1];
+
+                total += (quantity / offerQuantity) * offerPrice;
+                total+=(quantity % offerQuantity) * unitPrices.get(item);
+            }else{
+                total +=quantity * unitPrices.get(item);
             }
 
         }
@@ -77,8 +82,3 @@ public class CheckoutSolution {
         return total;
     }
 }
-
-
-
-
-
