@@ -11,12 +11,12 @@ class CheckoutSolutionTest {
     private CheckoutSolution checkoutSolution;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         checkoutSolution = new CheckoutSolution();
     }
 
     @Test
-    public void checkoutSingleItems(){
+    public void checkoutSingleItems() {
         assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
         assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
         assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
@@ -24,7 +24,7 @@ class CheckoutSolutionTest {
     }
 
     @Test
-    public void testMultipleItemsWithOffers(){
+    public void testMultipleItemsWithOffers() {
         assertEquals(50 + 30, checkoutSolution.checkout("AB"), "A+B should cost 80");
         assertEquals(20 + 15, checkoutSolution.checkout("CD"), "C + D should 35");
         assertEquals(50 + 30 + 20 + 15, checkoutSolution.checkout("ABCD"), "A + B + C + D  should cost 115");
@@ -32,9 +32,17 @@ class CheckoutSolutionTest {
     }
 
     @Test
-    public void checkoutInvalidItem(){
+    public void checkoutInvalidItem() {
         assertEquals(-1, checkoutSolution.checkout("E"), "Invalid items should return -1 ");
         assertEquals(-1, checkoutSolution.checkout("AX"), "Any invalid item returns -1 ");
+    }
+
+    @Test
+    public void checkoutEnptyOrNull(){
+        assertEquals(-1, checkoutSolution.checkout(""), "Empty String should cost 0 ");
+        assertEquals(-1, checkoutSolution.checkout(null), "Empty String should cost 0 ");
+
+
     }
 
 
