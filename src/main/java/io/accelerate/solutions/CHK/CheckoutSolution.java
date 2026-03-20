@@ -33,7 +33,13 @@ public class CheckoutSolution {
         int total = 0;
 
         if(count.containsKey('A')){
-            int aCount = count.get()
+            int aCount = count.get('A');
+            total+=(aCount/3) * 130;
+            total+=(aCount %3) * 50;
+        }
+
+        if(count.containsKey('B')){
+            int bCount
         }
 
 
@@ -51,6 +57,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
