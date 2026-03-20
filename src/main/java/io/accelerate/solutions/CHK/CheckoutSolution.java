@@ -37,27 +37,17 @@ public class CheckoutSolution {
         total += (countA / 3) * 130 + (countA % 3) * 30;
 
         int countB = count.getOrDefault('B', 0);
-        total+=(countB/2) * 
+        total+=(countB/2) * 45 + (countB % 2) * 30;
 
-        if (count.containsKey('A')) {
-            int aCount = count.get('A');
-            total += (aCount / 3) * 130;
-            total += (aCount % 3) * 50;
-        }
+        total += count.getOrDefault('C',0) + 20;
 
-        if (count.containsKey('B')) {
-            int bCount = count.get('B');
-            total += (bCount / 2) * 45;
-            total += (bCount % 2) * 30;
+        total+=count.getOrDefault('D',0) + 15;
 
-        }
-
-        total += count.getOrDefault('C', 0) + 20;
-        total += count.getOrDefault('D', 0) + 15;
         return total;
 
     }
 }
+
 
 
 
