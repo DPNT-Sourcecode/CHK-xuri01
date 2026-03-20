@@ -18,9 +18,9 @@ class CheckoutSolutionTest {
     @Test
     public void checkoutSingleItems(){
         assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
-       // assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
-        //assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
-        //assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
+        assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
+        assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
+        assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
     }
 
     @Test
