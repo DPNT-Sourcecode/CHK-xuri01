@@ -37,8 +37,9 @@ public class CheckoutSolution {
         int total = 0;
 
         for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
-            String item = entry.getKey();
+            String sku = entry.getKey();
             int quantity = entry.getValue();
+            int price = unitPrices.
 
             if (offers.containsKey(item)) {
                 int[] offer = offers.get(item);
@@ -56,6 +57,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
