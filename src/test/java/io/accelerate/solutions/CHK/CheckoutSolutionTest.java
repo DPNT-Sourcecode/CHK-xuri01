@@ -25,21 +25,17 @@ class CheckoutSolutionTest {
 
     @Test
     public void testMultipleItemsWithOffers(){
-        assertEquals(50 + 30, checkoutSolution.checkout("AB"), "3A+B should cost 160");
+        assertEquals(50 + 30, checkoutSolution.checkout("AB"), "A+B should cost 80");
         assertEquals(20 + 15, checkoutSolution.checkout("CD"), "C + D should 35");
         assertEquals(50 + 30 + 20 + 15, checkoutSolution.checkout("ABCD"), "A + B + C + D  should cost 115");
 
     }
 
-    /*
-
     @Test
-    public void testSpecialOffers(){
-        assertEquals(130, checkoutSolution.checkout("AAA"), "3A offer should cost 130");
-        assertEquals(45, checkoutSolution.checkout("BB"), "2B should offer cost 45");
+    public void checkoutInvalidItem(){
+        assertEquals(-1, checkoutSolution.checkout("E"), "Invalid items should return -1 ");
+        assertEquals(-1, checkoutSolution.checkout("AX"), "Any invalid item returns -1 ");
     }
 
-
-     */
 
 }
