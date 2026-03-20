@@ -35,33 +35,7 @@ public class CheckoutSolution {
             if(unitPrices.containsKey(key)){
                 total += unitPrices.get(key);
             }else{
-                
-            }
-        }
-
-        for (char c : items.toCharArray()) {
-            String item = String.valueOf(c);
-            if (!unitPrices.containsKey(item)) {
-                counts.put(item, counts.getOrDefault(item, 0) + 1);
-            }
-        }
-
-        int total = 0;
-
-        for (Map.Entry<String, Integer> entry : counts.entrySet()) {
-            String sku = entry.getKey();
-            int quantity = entry.getValue();
-            int price = unitPrices.get(sku);
-
-            if (offers.containsKey(sku)) {
-                int[] offer = offers.get(sku);
-                int offerQuantity = offer[0];
-                int offerPrice = offer[1];
-
-                total += (quantity / offerQuantity) * offerPrice;
-                total += (quantity % offerQuantity) * price;
-            } else {
-                total += quantity * price;
+                return -1;
             }
         }
 
