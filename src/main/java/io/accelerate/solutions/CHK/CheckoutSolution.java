@@ -15,11 +15,17 @@ public class CheckoutSolution {
     }};
 
     private static final Map<String, int []> offers = new HashMap<>(){{
-        put("A", new int[]{3, 130})
-    }}
+        put("A", new int[]{3, 130});
+        put("B", new int[]{2,45});
+    }};
+
+
 
     public Integer checkout(String skus) {
-        if (skus == null) return -1;
+        if (skus == null || skus.isEmpty()) return -1;
+        Map<String, Integer> countMap = new HashMap<>();
+
+        for(char c: items.toChar)
         int countA = 0; int countB = 0; int countC = 0; int countD = 0;
         for (char sku : skus.toCharArray()) {
             switch (sku) {
@@ -48,5 +54,6 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
