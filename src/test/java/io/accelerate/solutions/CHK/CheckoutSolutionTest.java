@@ -21,4 +21,8 @@ class CheckoutSolutionTest {
         Assertions.assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
     }
 
+    public testSpecialOffers(){
+        
+    }
+
 }
