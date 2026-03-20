@@ -15,7 +15,8 @@ class CheckoutSolutionTest {
 
     @Test
     public void checkoutValidInputs(){
-        assertThat(checkoutSolution.checkout("A,B,C,D"))
+        var total = checkoutSolution.checkout("A,B,C,D");
+        assertThat(total, 10);
     }
 
 }
