@@ -24,25 +24,26 @@ public class CheckoutSolution {
 
     public Integer checkout(String items) {
 
-        if (items == null || items.isEmpty()) return -1;
-        Map<String, Integer> countMap = new HashMap<>();
+        if (items == null || items.isEmpty()) return 0;
+
+        Map<String, Integer> counts = new HashMap<>();
 
         for (char c : items.toCharArray()) {
             String item = String.valueOf(c);
             if (!unitPrices.containsKey(item)) {
-                countMap.put(item, countMap.getOrDefault(item, 0) + 1);
+                counts.put(item, counts.getOrDefault(item, 0) + 1);
             }
         }
 
         int total = 0;
 
-        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : counts.entrySet()) {
             String sku = entry.getKey();
             int quantity = entry.getValue();
             int price = unitPrices.
 
-            if (offers.containsKey(item)) {
-                int[] offer = offers.get(item);
+            if (offers.containsKey(sku)) {
+                int[] offer = offers.get(sku);
                 int offerQuantity = offer[0];
                 int offerPrice = offer[1];
 
@@ -57,6 +58,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
