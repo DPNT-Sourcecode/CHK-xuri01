@@ -32,7 +32,9 @@ class CheckoutSolutionTest {
     @Test
     public void testMultipleItemsWithOffers(){
         assertEquals(160, checkoutSolution.checkout("AAAB"), "3A+B should cost 160");
-        assertEquals(190, checkoutSolution.checkout("AAABBD"), "3A+2B+D should cost 175");
+        assertEquals(260, checkoutSolution.checkout("AAABBD"), "3A+2B+D should cost 175");
+        assertEquals(190, checkoutSolution.checkout("AAAAAA"), "6A should cost 175");
+
     }
 
 }
