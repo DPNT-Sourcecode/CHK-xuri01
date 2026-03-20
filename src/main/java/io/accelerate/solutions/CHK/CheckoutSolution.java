@@ -46,7 +46,7 @@ public class CheckoutSolution {
         }
 
         total += count.getOrDefault('C',0) + 20;
-        total+=count.getOrDefault(0, )
+        total+=count.getOrDefault("D")
 
 
         /////
@@ -63,4 +63,5 @@ public class CheckoutSolution {
 
     }
 }
+
 
