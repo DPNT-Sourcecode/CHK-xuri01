@@ -2,7 +2,20 @@ package io.accelerate.solutions.CHK;
 
 import io.accelerate.runner.SolutionNotImplementedException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CheckoutSolution {
+
+    private static final Map<String, Integer> unitPrices = new HashMap<>(){{
+        put("A", 50),
+        put("B", 30),
+        put("C", 20),
+        put("D", 15)
+    }};
+
+    private static final Map<String, int >
+
     public Integer checkout(String skus) {
         if (skus == null) return -1;
         int countA = 0; int countB = 0; int countC = 0; int countD = 0;
@@ -33,3 +46,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
