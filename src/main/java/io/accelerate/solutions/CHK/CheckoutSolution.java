@@ -42,7 +42,7 @@ public class CheckoutSolution {
 
     private int calculateTotal(Map<String, Integer> count){
         int total = 0;
-        int specialOffer30Percent = count.getOrDefault("A", 0);
+        int multipricedItem = count.getOrDefault("A", 0);
         total += (specialOffer30Percent/ 3) * 130 + (specialOffer30Percent % 3) * 50;
 
         int countB = count.getOrDefault("B", 0);
@@ -52,5 +52,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
