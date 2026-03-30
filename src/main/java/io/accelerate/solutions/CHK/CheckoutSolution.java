@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    private static final Map<String, Integer> prices = new HashMap<>() {{
+    private static final Map<String, Integer> PRICES = new HashMap<>() {{
         put("A", 50);
         put("B", 30);
         put("C", 20);
@@ -21,7 +21,7 @@ public class CheckoutSolution {
         for (char c : items.toCharArray()) {
             String key = String.valueOf(c);
 
-            if (!prices.containsKey(key)) {
+            if (!PRICES.containsKey(key)) {
                 return -1;
             }
 
@@ -53,4 +53,3 @@ public class CheckoutSolution {
     }
 
 }
-
