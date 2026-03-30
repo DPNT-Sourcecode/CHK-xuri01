@@ -38,20 +38,10 @@ public class CheckoutSolution {
         total += itemCounts.getOrDefault("D", 0) * PRICES.get("D");
         total += itemCounts.getOrDefault("E", 0) * PRICES.get("E");
 
-        int numberOfEItems = itemCounts.getOrDefault("E", 0);
-        int freeBItemsFromPromotion = numberOfEItems / 2;
-
-        int numberOfBItems = itemCounts.getOrDefault("B", 0);
-        itemCounts.put("B", Math.max(0, numberOfBItems - freeBItemsFromPromotion));
-
-        int total = calculateTotalWithSpecialOffers(itemCounts);
-        total += itemCounts.getOrDefault("C", 0) * 20;
-        total += itemCounts.getOrDefault("D", 0) * 15;
-
         return total;
     }
 
-    private void applyFreeBPromotion(Map<String, Integer> itemCounts){
+    private void applyFreeBPromotion(Map<String, Integer> itemCounts) {
         int numberOfItems = itemCounts.getOrDefault("E", 0);
         int eligibleFreeBItems = numberOfItems / 2;
         int currentBItemCount = itemCounts.getOrDefault("B", 0);
@@ -60,21 +50,23 @@ public class CheckoutSolution {
 
     }
 
-    private int calculatePriceForA(Map<String, Integer> itemCounts){
-        int total =0;
-        int numberOfAItems = itemCounts.getOrDefault("A",  0);
+    private int calculatePriceForA(Map<String, Integer> itemCounts) {
+        int total = 0;
+        int numberOfAItems = itemCounts.getOrDefault("A", 0);
         total += (numberOfAItems / 5) * 200;
-        numberOfAItems %=5;
+        numberOfAItems %= 5;
         total += (numberOfAItems / 3) * 130;
         numberOfAItems %= 3;
         total += numberOfAItems * PRICES.get("A");
         return total;
     }
 
-    private int calculatePriceForB(Map<String, Integer> itemCounts){
+    private int calculatePriceForB(Map<String, Integer> itemCounts) {
         int total = 0;
         int numberOfBItems = itemCounts.getOrDefault("B", 0);
-        
+        total += (numberOfBItems / 2) * 45;
+        total += (numberOfBItems % 2) * PRICES.get("B");
+        return total;
     }
 
     private int calculateTotalWithSpecialOffers(Map<String, Integer> count) {
@@ -89,6 +81,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
