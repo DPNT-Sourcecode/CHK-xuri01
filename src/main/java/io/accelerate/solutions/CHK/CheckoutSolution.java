@@ -28,11 +28,12 @@ public class CheckoutSolution {
             count.put(key, count.getOrDefault(key, 0) + 1);
         }
 
-        int countE = count.getOrDefault("E", 0);
-        int freeB = countE / 2;
+        int numberOfEItems  = count.getOrDefault("E", 0);
+        int freeBItemsFromPromotion  = numberOfEItems  / 2;
 
-        int countB = count.getOrDefault("B", 0);
-        count.put("B", Math.max(0, countB - freeB));
+        int numberOfBItems  = count.getOrDefault("B", 0);
+        count.put("B", Math.max(0, numberOfBItems  - freeBItemsFromPromotion ));
+        
         int total =  calculateTotal(count);
         total += count.getOrDefault("C", 0) * 20;
         total += count.getOrDefault("D", 0) * 15;
