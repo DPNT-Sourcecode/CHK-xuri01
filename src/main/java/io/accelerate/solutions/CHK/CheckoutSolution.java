@@ -12,12 +12,12 @@ public class CheckoutSolution {
         put("D", 15);
     }};
 
-    private static final Map<String, Integer> PRICES = Map.of {{
-        put("A", 50);
-        put("B", 30);
-        put("C", 20);
-        put("D", 15);
-    }};
+    private static final Map<String, Integer> PRICES = Map.of (
+        "A", 50,
+        "B", 30,
+        "C", 20,
+        "D", 15
+    );
 
 
     public Integer checkout(String items) {
@@ -61,3 +61,4 @@ public class CheckoutSolution {
     }
 
 }
+
