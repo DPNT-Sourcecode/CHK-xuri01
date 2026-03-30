@@ -42,16 +42,17 @@ public class CheckoutSolution {
 
     private int calculateTotal(Map<String, Integer> count){
         int total = 0;
-        int multipricedItem = count.getOrDefault("A", 0);
-        total += (specialOffer30Percent/ 3) * 130 + (specialOffer30Percent % 3) * 50;
+        int multiPricedItem = count.getOrDefault("A", 0);
+        total += (multiPricedItem/ 3) * 130 + (multiPricedItem % 3) * 50;
 
-        int countB = count.getOrDefault("B", 0);
-        total += (countB / 2) * 45 + (countB % 2) * 30;
+        int singlePricedItem = count.getOrDefault("B", 0);
+        total += (singlePricedItem / 2) * 45 + (singlePricedItem % 2) * 30;
         return total;
 
     }
 
 }
+
 
 
 
