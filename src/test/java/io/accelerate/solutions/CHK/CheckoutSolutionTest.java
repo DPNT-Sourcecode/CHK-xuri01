@@ -61,8 +61,8 @@ class CheckoutSolutionTest {
     public void checkoutPromotionEFreeB(){
         assertEquals(80, checkoutSolution.checkout("EE"), "2E should cost 80 (no B to discount)");
         assertEquals(80, checkoutSolution.checkout("EEB"), "2E + 1B + B is free ");
-        assertEquals(110, checkoutSolution.checkout("EEBB"), "2E + 2B -> Only + B is free ");
-
+        assertEquals(110, checkoutSolution.checkout("EEBB"), "2E + 2B -> Only 1 B is free ");
+        assertEquals(160, checkoutSolution.checkout("EEEEBB"), "4E + 2  free B ");
     }
 
 }
