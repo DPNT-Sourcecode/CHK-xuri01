@@ -35,7 +35,6 @@ class CheckoutSolutionTest {
 
     @Test
     public void checkoutInvalidItem() {
-        assertEquals(-1, checkoutSolution.checkout("E"), "Invalid items should return -1 ");
         assertEquals(-1, checkoutSolution.checkout("AX"), "Any invalid item returns -1 ");
     }
 
@@ -47,12 +46,13 @@ class CheckoutSolutionTest {
     }
 
     @Test
-    public void checkoutSpecialOffers(){
+    public void checkoutSpecialOffersA(){
         assertEquals(130, checkoutSolution.checkout("AAA"), "3A should cost 130");
-
+        assertEquals(200, checkoutSolution.checkout("AAAAA"), "5A should cost 200");;
     }
 
 
 }
+
 
 
