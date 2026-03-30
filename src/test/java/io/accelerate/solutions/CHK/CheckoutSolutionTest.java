@@ -2,6 +2,8 @@ package io.accelerate.solutions.CHK;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,8 +16,9 @@ class CheckoutSolutionTest {
         checkoutSolution = new CheckoutSolution();
     }
 
-    @Test
-    public void checkoutSingleItems() {
+    @ParameterizedTest
+    @CsvSource({"A, 50", "B, 30", "C, 20", "D, 15", "E, 40" })
+    public void checkoutSingleItems(String input, int expected) {
         assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
         assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
         assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
