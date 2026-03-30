@@ -5,13 +5,6 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    private static final Map<String, Integer> PRICES = new HashMap<>() {{
-        put("A", 50);
-        put("B", 30);
-        put("C", 20);
-        put("D", 15);
-    }};
-
     private static final Map<String, Integer> PRICES = Map.of (
         "A", 50,
         "B", 30,
@@ -61,4 +54,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
