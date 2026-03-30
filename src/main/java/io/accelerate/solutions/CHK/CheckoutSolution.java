@@ -33,20 +33,22 @@ public class CheckoutSolution {
 
         int countB = count.getOrDefault("B", 0);
         count.put("B", Math.max(0, countB - freeB));
+        int total =  calculateTotal(count);
+        total += count.getOrDefault("C", 0) * 20;
+        total += count.getOrDefault("D", 0) * 15;
 
+        return total;
+    }
+
+    private int calculateTotal(Map<String, Integer> count){
         int total = 0;
-        
-
         int countA = count.getOrDefault("A", 0);
         total += (countA / 3) * 130 + (countA % 3) * 50;
 
         int countB = count.getOrDefault("B", 0);
         total += (countB / 2) * 45 + (countB % 2) * 30;
-
-        total += count.getOrDefault("C", 0) * 20;
-        total += count.getOrDefault("D", 0) * 15;
-
         return total;
+
     }
 }
 
