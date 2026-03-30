@@ -35,8 +35,8 @@ public class CheckoutSolution {
         total += calculatePriceForB(itemCounts);
 
         total += itemCounts.getOrDefault("C", 0) * PRICES.get("C");
-        total += itemCounts.getOrDefault("D", 0) * PRICES.get("C");
-        total += itemCounts.getOrDefault("E", 0) * PRICES.get("C");
+        total += itemCounts.getOrDefault("D", 0) * PRICES.get("D");
+        total += itemCounts.getOrDefault("E", 0) * PRICES.get("E");
 
         int numberOfEItems = itemCounts.getOrDefault("E", 0);
         int freeBItemsFromPromotion = numberOfEItems / 2;
@@ -63,5 +63,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
