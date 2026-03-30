@@ -51,6 +51,10 @@ public class CheckoutSolution {
         return total;
     }
 
+    private void applyFreeBPromotion(Map<String, Integer> itemCounts){
+        int numberOfItems = itemCounts.getOrDefault
+    }
+
     private int calculateTotalWithSpecialOffers(Map<String, Integer> count) {
         int total = 0;
         int numberOfAItems = count.getOrDefault("A", 0);
@@ -63,6 +67,3 @@ public class CheckoutSolution {
     }
 
 }
-
-
-
