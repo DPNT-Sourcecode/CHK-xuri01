@@ -21,18 +21,15 @@ public class CheckoutSolution {
         for (char c : items.toCharArray()) {
             String key = String.valueOf(c);
 
-            // ✅ FIX: validate correctly
             if (!prices.containsKey(key)) {
                 return -1;
             }
 
-            // ✅ FIX: use String key consistently
             count.put(key, count.getOrDefault(key, 0) + 1);
         }
 
         int total = 0;
 
-        // ✅ FIX: use String keys
         int countA = count.getOrDefault("A", 0);
         total += (countA / 3) * 130 + (countA % 3) * 50;
 
