@@ -63,7 +63,12 @@ public class CheckoutSolution {
     private int calculatePriceForA(Map<String, Integer> itemCounts){
         int total =0;
         int numberOfAItems = itemCounts.getOrDefault("A",  0);
-        
+        total += (numberOfAItems / 5) * 200;
+        numberOfAItems %=5;
+        total += (numberOfAItems / 3) * 130;
+        numberOfAItems %= 3;
+        total += numberOfAItems * PRICES
+
     }
 
     private int calculateTotalWithSpecialOffers(Map<String, Integer> count) {
@@ -78,6 +83,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
