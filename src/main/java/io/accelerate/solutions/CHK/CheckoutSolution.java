@@ -30,8 +30,10 @@ public class CheckoutSolution {
         }
 
         applyFreeBPromotion(itemCounts);
-        int total = 0; 
-        total += calculatePriceForA()
+        int total = 0;
+        total += calculatePriceForA(itemCounts);
+
+        calculatePriceForA(itemCounts);
 
         int numberOfEItems = itemCounts.getOrDefault("E", 0);
         int freeBItemsFromPromotion = numberOfEItems / 2;
