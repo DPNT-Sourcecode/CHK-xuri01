@@ -21,7 +21,7 @@ class CheckoutSolutionTest {
         assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
         assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
         assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
-        assertEquals(15, checkoutSolution.checkout("E"), "Single D should cost 15");
+        assertEquals(15, checkoutSolution.checkout("E"), "Single E should cost 15");
 
     }
 
@@ -54,4 +54,5 @@ class CheckoutSolutionTest {
 
 
 }
+
 
