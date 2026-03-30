@@ -68,16 +68,4 @@ public class CheckoutSolution {
         total += (numberOfBItems % 2) * PRICES.get("B");
         return total;
     }
-
-    private int calculateTotalWithSpecialOffers(Map<String, Integer> count) {
-        int total = 0;
-        int numberOfAItems = count.getOrDefault("A", 0);
-        total += (numberOfAItems / 3) * 130 + (numberOfAItems % 3) * 50;
-
-        int numberOfBItems = count.getOrDefault("B", 0);
-        total += (numberOfBItems / 2) * 45 + (numberOfBItems % 2) * 30;
-        return total;
-
-    }
-
 }
