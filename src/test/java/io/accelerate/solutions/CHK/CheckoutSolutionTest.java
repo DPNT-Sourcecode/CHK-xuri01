@@ -1,6 +1,5 @@
 package io.accelerate.solutions.CHK;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +20,7 @@ class CheckoutSolutionTest {
         assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
         assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
         assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
-        assertEquals(15, checkoutSolution.checkout("E"), "Single E should cost 15");
+        assertEquals(40, checkoutSolution.checkout("E"), "Single E should cost 40");
 
     }
 
@@ -66,6 +65,3 @@ class CheckoutSolutionTest {
     }
 
 }
-
-
-
