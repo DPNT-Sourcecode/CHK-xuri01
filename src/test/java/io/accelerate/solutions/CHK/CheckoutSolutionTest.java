@@ -17,14 +17,9 @@ class CheckoutSolutionTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"A, 50", "B, 30", "C, 20", "D, 15", "E, 40" })
+    @CsvSource({"A, 50", "B, 30", "C, 20", "D, 15", "E, 40"})
     public void checkoutSingleItems(String input, int expected) {
-        assertEquals(50, checkoutSolution.checkout("A"), "Single A should cost 50");
-        assertEquals(30, checkoutSolution.checkout("B"), "Single B should cost 30");
-        assertEquals(20, checkoutSolution.checkout("C"), "Single C should cost 20");
-        assertEquals(15, checkoutSolution.checkout("D"), "Single D should cost 15");
-        assertEquals(40, checkoutSolution.checkout("E"), "Single E should cost 40");
-
+        assertEquals(expected, checkoutSolution.checkout(input));
     }
 
     @Test
@@ -41,26 +36,27 @@ class CheckoutSolutionTest {
     }
 
     @Test
-    public void checkoutEmptyOrNull(){
+    public void checkoutEmptyOrNull() {
         assertEquals(0, checkoutSolution.checkout(""), "Empty String should cost 0 ");
         assertEquals(0, checkoutSolution.checkout(null), "Null String should cost 0 ");
 
     }
 
     @Test
-    public void checkoutSpecialOffersA(){
+    public void checkoutSpecialOffersA() {
         assertEquals(130, checkoutSolution.checkout("AAA"), "3A should cost 130");
-        assertEquals(200, checkoutSolution.checkout("AAAAA"), "5A should cost 200");;
+        assertEquals(200, checkoutSolution.checkout("AAAAA"), "5A should cost 200");
+        ;
     }
 
     @Test
-    public void checkoutSpecialOffersB(){
+    public void checkoutSpecialOffersB() {
         assertEquals(45, checkoutSolution.checkout("BB"), "3A should cost 130");
     }
 
 
     @Test
-    public void checkoutPromotionEFreeB(){
+    public void checkoutPromotionEFreeB() {
         assertEquals(80, checkoutSolution.checkout("EE"), "2E should cost 80 (no B to discount)");
         assertEquals(80, checkoutSolution.checkout("EEB"), "2E + 1B + B is free ");
         assertEquals(110, checkoutSolution.checkout("EEBB"), "2E + 2B -> Only 1 B is free ");
@@ -68,3 +64,4 @@ class CheckoutSolutionTest {
     }
 
 }
+
