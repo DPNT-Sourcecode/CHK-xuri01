@@ -16,7 +16,7 @@ public class CheckoutSolution {
 
         if (items == null || items.isEmpty()) return 0;
 
-        Map<String, Integer> count = new HashMap<>();
+        Map<String, Integer> itemCounts = new HashMap<>();
 
         for (char c : items.toCharArray()) {
             String key = String.valueOf(c);
@@ -25,31 +25,32 @@ public class CheckoutSolution {
                 return -1;
             }
 
-            count.put(key, count.getOrDefault(key, 0) + 1);
+            itemCounts.put(key, itemCounts.getOrDefault(key, 0) + 1);
         }
 
-        int numberOfEItems  = count.getOrDefault("E", 0);
+        int numberOfEItems  = itemCounts.getOrDefault("E", 0);
         int freeBItemsFromPromotion  = numberOfEItems  / 2;
 
-        int numberOfBItems  = count.getOrDefault("B", 0);
-        count.put("B", Math.max(0, numberOfBItems  - freeBItemsFromPromotion ));
-        
-        int total =  calculateTotal(count);
-        total += count.getOrDefault("C", 0) * 20;
-        total += count.getOrDefault("D", 0) * 15;
+        int numberOfBItems  = itemCounts.getOrDefault("B", 0);
+        itemCounts.put("B", Math.max(0, numberOfBItems  - freeBItemsFromPromotion ));
+
+        int total =  calculateTotalWithSpecialOffers(itemCounts);
+        total += itemCounts.getOrDefault("C", 0) * 20;
+        total += itemCounts.getOrDefault("D", 0) * 15;
 
         return total;
     }
 
-    private int calculateTotal(Map<String, Integer> count){
+    private int calculateTotalWithSpecialOffers(Map<String, Integer> count){
         int total = 0;
-        int multiPricedItem = count.getOrDefault("A", 0);
-        total += (multiPricedItem/ 3) * 130 + (multiPricedItem % 3) * 50;
+        int numberOfAItems = count.getOrDefault("A", 0);
+        total += (numberOfAItems/ 3) * 130 + (numberOfAItems % 3) * 50;
 
-        int singlePricedItem = count.getOrDefault("B", 0);
-        total += (singlePricedItem / 2) * 45 + (singlePricedItem % 2) * 30;
+        int numberOfBItems = count.getOrDefault("B", 0);
+        total += (numberOfBItems / 2) * 45 + (numberOfBItems % 2) * 30;
         return total;
 
     }
 
 }
+
