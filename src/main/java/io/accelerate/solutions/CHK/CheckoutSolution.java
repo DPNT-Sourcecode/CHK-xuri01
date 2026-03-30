@@ -62,7 +62,8 @@ public class CheckoutSolution {
 
     private int calculatePriceForA(Map<String, Integer> itemCounts){
         int total =0;
-        int numberOfAItems = 
+        int numberOfAItems = itemCounts.getOrDefault("A",  0);
+        
     }
 
     private int calculateTotalWithSpecialOffers(Map<String, Integer> count) {
@@ -77,6 +78,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
