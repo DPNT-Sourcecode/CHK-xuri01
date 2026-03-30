@@ -28,13 +28,14 @@ public class CheckoutSolution {
             count.put(key, count.getOrDefault(key, 0) + 1);
         }
 
-        int total = 0;
-
         int countE = count.getOrDefault("E", 0);
         int freeB = countE / 2;
 
         int countB = count.getOrDefault("B", 0);
-        count.put("B", Math.max(0, countB - ))
+        count.put("B", Math.max(0, countB - freeB));
+
+        int total = 0;
+        
 
         int countA = count.getOrDefault("A", 0);
         total += (countA / 3) * 130 + (countA % 3) * 50;
@@ -48,4 +49,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
