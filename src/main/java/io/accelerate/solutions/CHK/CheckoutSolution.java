@@ -57,7 +57,12 @@ public class CheckoutSolution {
         int currentBItemCount = itemCounts.getOrDefault("B", 0);
         int chargeableBItems = Math.max(0, currentBItemCount - eligibleFreeBItems);
         itemCounts.put("B", chargeableBItems);
-        
+
+    }
+
+    private int calculatePriceForA(Map<String, Integer> itemCounts){
+        int total =0;
+        int numberOfAItems = 
     }
 
     private int calculateTotalWithSpecialOffers(Map<String, Integer> count) {
@@ -72,5 +77,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
