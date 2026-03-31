@@ -63,7 +63,7 @@ class CheckoutSolutionTest {
         assertEquals(160, checkoutSolution.checkout("EEEEBB"), "4E + 2  free B ");
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "F count {0} -> {1} ")
     @CsvSource({
             "F, 10",
             "FF, 20",
@@ -75,3 +75,4 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 }
+
