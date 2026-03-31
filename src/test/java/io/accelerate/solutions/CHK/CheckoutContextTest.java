@@ -70,6 +70,6 @@ class CheckoutContextTest {
 
     @Test
     void shouldReturnUnderlyingMap(){
-        assertEquals(items, context.getCount());
+        assertEquals(items, context.getItemCounts());
     }
 }
