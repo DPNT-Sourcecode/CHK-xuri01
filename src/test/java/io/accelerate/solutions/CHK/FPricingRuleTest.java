@@ -26,10 +26,10 @@ class FPricingRuleTest {
         assertEquals(0, result);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "F count = {0} -> total = {1} ")
     @CsvSource({
             "2, 20",
-            "3, 30",
+            "3, 20",
             "4, 30"
     })
     void shouldCalculateFPricesCorrectly(int count, int expected){
@@ -38,31 +38,5 @@ class FPricingRuleTest {
         int result = pricingRule.calculate(items);
         assertEquals(expected, result);
     }
-
-    /*
-    @Test
-    void shouldCalculatePriceForSingleF() {
-        Map<String, Integer> items = new HashMap<>();
-        items.put("F", 1);
-        int result = pricingRule.calculate(items);
-        assertEquals(10, result);
-    }
-
-    @Test
-    void shouldCalculatePriceForSTwoFs() {
-        Map<String, Integer> items = new HashMap<>();
-        items.put("F", 2);
-        int result = pricingRule.calculate(items);
-        assertEquals(20, result);
-    }
-
-    @Test
-    void shouldApplyFreeItemForThreeFs() {
-        Map<String, Integer> items = new HashMap<>();
-        items.put("F", 3);
-        int result = pricingRule.calculate(items);
-        assertEquals(20, result);
-    }
-*/
 
 }
