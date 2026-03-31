@@ -51,7 +51,10 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(input));
     }
 
-    void shouldReturnZero
+    @Test
+    void shouldReturnZeroForNull(){
+        assertEquals(0, checkoutSolution.checkout(null));
+    }
 
     @Test
     public void checkoutSpecialOffersA() {
@@ -85,6 +88,8 @@ class CheckoutSolutionTest {
     void shouldApplyFPromotion(String items, int expected) {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
+
+    public void shouldReturnMinus
 }
 
 
