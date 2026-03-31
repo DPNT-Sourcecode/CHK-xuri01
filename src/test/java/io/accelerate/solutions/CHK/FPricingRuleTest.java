@@ -2,6 +2,7 @@ package io.accelerate.solutions.CHK;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,11 @@ class FPricingRuleTest {
         Map<String, Integer> items = new HashMap<>();
         int result = pricingRule.calculate(items);
         assertEquals(0, result);
+    }
+
+    @ParameterizedTest
+    void shouldCalculateFPricesCorrectly(){
+
     }
 
     @Test
@@ -48,9 +54,5 @@ class FPricingRuleTest {
         assertEquals(20, result);
     }
 
-    @Test
-    void shouldApplyFreeItemForThreeItems(){
-
-    }
 
 }
