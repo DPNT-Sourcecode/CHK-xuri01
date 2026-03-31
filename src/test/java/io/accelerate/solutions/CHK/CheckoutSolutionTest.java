@@ -63,4 +63,9 @@ class CheckoutSolutionTest {
         assertEquals(160, checkoutSolution.checkout("EEEEBB"), "4E + 2  free B ");
     }
 
+    @ParameterizedTest
+    @CsvSource
+    void shouldApplyFPromotion(String items, int expected){
+
+    }
 }
