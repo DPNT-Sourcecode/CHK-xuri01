@@ -22,14 +22,19 @@ class CheckoutContextTest {
     }
 
     @Test
-    void shouldReturnCorrectCountsForExistingItemCounts() {
+    void shouldReturnCorrectCountsForExistingSkus() {
         assertEquals(2, context.getCount("A"));
-        assertEquals(1, context.getCount("B"));
+        assertEquals(2, context.getCount("B"));
     }
 
     @Test
     void shouldReturnZeroForMissingSku(){
         assertEquals(0, context.getCount("C"));
+    }
+
+    @Test
+    void shouldUpdateExistingSkuCount(){
+        context.setCount();
     }
 
     @Test
@@ -62,3 +67,4 @@ class CheckoutContextTest {
         assertEquals(10, context.getCount("A"));
     }
 }
+
