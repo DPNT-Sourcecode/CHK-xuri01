@@ -38,11 +38,6 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 
-    @Test
-    public void checkoutInvalidItem() {
-        assertEquals(-1, checkoutSolution.checkout("AX"), "Any invalid item returns -1 ");
-    }
-
     @ParameterizedTest
     @CsvSource({
             "'',0"
@@ -56,12 +51,6 @@ class CheckoutSolutionTest {
         assertEquals(0, checkoutSolution.checkout(null));
     }
 
-    @Test
-    public void checkoutSpecialOffersA() {
-        assertEquals(130, checkoutSolution.checkout("AAA"), "3A should cost 130");
-        assertEquals(200, checkoutSolution.checkout("AAAAA"), "5A should cost 200");
-        ;
-    }
 
     @Test
     public void checkoutSpecialOffersB() {
@@ -100,5 +89,6 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(items));
     }
 }
+
 
 
