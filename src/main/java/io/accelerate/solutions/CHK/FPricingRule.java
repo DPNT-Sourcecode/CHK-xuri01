@@ -10,9 +10,11 @@ public class FPricingRule implements PricingRule {
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
         int count = itemCounts.getOrDefault(SKU, 0);
-        int freeItems = 
+        int freeItems = count / GROUP_SIZE;
+        int payableItems = count - freeItems;
 
-        return 0;
+        return payableItems * UNIT_PRICE;
     }
 }
+
 
