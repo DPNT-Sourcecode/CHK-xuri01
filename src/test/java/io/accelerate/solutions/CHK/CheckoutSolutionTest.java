@@ -64,8 +64,14 @@ class CheckoutSolutionTest {
     }
 
     @ParameterizedTest
-    @CsvSource
+    @CsvSource({
+            "F, 10",
+            "FF, 20",
+            "FFF, 20",
+            "FFFF, 30",
+            "FFFFFF, 40"
+    })
     void shouldApplyFPromotion(String items, int expected){
-
+        assertEquals(expected, checkoutSolution.checkout(items));
     }
 }
