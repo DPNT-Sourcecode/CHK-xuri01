@@ -25,9 +25,11 @@ class FPricingRuleTest {
     }
 
     @Test
-    void shouldCalculatePriceForSingleF(){
+    void shouldCalculatePriceForSingleF() {
         Map<String, Integer> items = new HashMap<>();
-        items.
+        items.put("F", 1);
+        int result = pricingRule.calculate(items);
+        assertEquals(10, result);
     }
 
 
