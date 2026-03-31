@@ -39,7 +39,7 @@ class FreeBWithEPromotionTest {
     void shouldReduceBPartiallyWhenMoreBThanFreeItems() {
         Map<String, Integer> items = new HashMap<>();
         items.put("E", 2);
-        items.put("B", 1);
+        items.put("B", 3);
 
         promotion.apply(items);
         assertEquals(0, items.get("B"));
