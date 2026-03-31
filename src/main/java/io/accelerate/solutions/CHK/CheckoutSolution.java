@@ -11,6 +11,7 @@ public class CheckoutSolution {
     private final List<PricingRule> pricingRules = List.of(
             new APricingRule(),
             new BPricingRule(),
+            new FPricingRule(),
             new DefaultPricingRule("C", 20),
             new DefaultPricingRule("D", 15),
             new DefaultPricingRule("E", 40)
@@ -47,3 +48,4 @@ public class CheckoutSolution {
         return List.of("A", "B", "C", "D", "E","F").contains(sku);
     }
 }
+
