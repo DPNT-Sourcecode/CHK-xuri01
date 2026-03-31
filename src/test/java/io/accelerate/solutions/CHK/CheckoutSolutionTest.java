@@ -34,7 +34,7 @@ class CheckoutSolutionTest {
             "AAAA, 180",
             "AAAAAA, 250"
     })
-    public void shouldApplySpecialOffersForA(String items, int expected){
+    public void shouldApplySpecialOffersForA(String items, int expected) {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 
@@ -52,7 +52,7 @@ class CheckoutSolutionTest {
     }
 
     @Test
-    void shouldReturnZeroForNull(){
+    void shouldReturnZeroForNull() {
         assertEquals(0, checkoutSolution.checkout(null));
     }
 
@@ -89,7 +89,16 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 
-    public void shouldReturnMinus
+    @ParameterizedTest
+    @CsvSource({
+            "AX",
+            "A1",
+            "a",
+            "Z"
+    })
+    public void shouldReturnMinusOneForInvalidInputs(String items) {
+        assertEquals(-1, checkoutSolution.checkout(items));
+    }
 }
 
 
