@@ -22,7 +22,7 @@ class CheckoutContextTest {
     }
 
     @Test
-    void shouldReturnCorrectItemCounts() {
+    void shouldReturnCorrectCountsForExistingItemCounts() {
         assertEquals(2, context.getCount("A"));
         assertEquals(1, context.getCount("B"));
     }
@@ -59,6 +59,6 @@ class CheckoutContextTest {
     @Test
     void shouldReflectExternalMapChanges(){
         items.put("A", 10);
-        assertEquals(10, context.getCount("");
+        assertEquals(10, context.getCount("A"));
     }
 }
