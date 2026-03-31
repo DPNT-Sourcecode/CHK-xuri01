@@ -43,7 +43,7 @@ class BPricingRuleTest {
     })
     void shouldIgnoreOtherSkus(String sku, int count){
         items.put(sku, count);
-        int result = pricingRule.calculate()
+        int result = pricingRule.calculate(items)
     }
 
 }
