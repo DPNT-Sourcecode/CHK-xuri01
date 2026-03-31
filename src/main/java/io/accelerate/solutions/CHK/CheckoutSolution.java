@@ -33,11 +33,12 @@ public class CheckoutSolution {
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
         }
 
+        int total = 0;
         for (Promotion promotion : promotions) {
-            promotion.apply(itemCounts);
+           // promotion.apply(itemCounts);
+            total = promotion.apply(itemCounts, total);
         }
 
-        int total = 0;
         for (PricingRule rule : pricingRules) {
             total += rule.calculate(itemCounts);
         }
