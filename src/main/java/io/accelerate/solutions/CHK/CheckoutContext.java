@@ -13,5 +13,14 @@ public class CheckoutContext {
     public Map<String, Integer> getItemCounts(){
         return itemCounts;
     }
+
+    public int getCount(String sku){
+        return getItemCounts().getOrDefault(sku, 0);
+    }
+
+    public void setCount(String ){
+
+    }
 }
+
 
