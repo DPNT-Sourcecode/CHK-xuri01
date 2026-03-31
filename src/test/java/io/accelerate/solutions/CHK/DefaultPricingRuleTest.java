@@ -49,4 +49,3 @@ class DefaultPricingRuleTest {
         assertEquals(60, result);
     }
 }
-
