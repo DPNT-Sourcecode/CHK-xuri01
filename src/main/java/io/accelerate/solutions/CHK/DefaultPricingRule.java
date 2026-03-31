@@ -16,4 +16,3 @@ public class DefaultPricingRule implements PricingRule{
         return itemCounts.getOrDefault(sku, 0) * price;
     }
 }
-

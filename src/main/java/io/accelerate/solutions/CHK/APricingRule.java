@@ -14,4 +14,3 @@ public class APricingRule implements PricingRule{
         return total;
     }
 }
-
