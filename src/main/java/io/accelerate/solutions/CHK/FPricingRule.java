@@ -16,5 +16,3 @@ public class FPricingRule implements PricingRule {
         return payableItems * UNIT_PRICE;
     }
 }
-
-
