@@ -68,7 +68,8 @@ class CheckoutContextTest {
         assertEquals(10, context.getCount("A"));
     }
 
-    void 
+    @Test
+    void shouldReturnUnderlyingMap(){
+        assertEquals(items, context.getCount());
+    }
 }
-
-
