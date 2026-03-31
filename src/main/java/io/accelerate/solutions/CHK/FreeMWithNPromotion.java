@@ -8,9 +8,10 @@ public class FreeMWithNPromotion implements Promotion{
         int nCount = itemCounts.getOrDefault("N", 0);
         int freeM = nCount / 3;
         int currentM = itemCounts.getOrDefault("M", 0);
-        itemCounts.put("M", Math.max(0, ))
+        itemCounts.put("M", Math.max(0, currentM - freeM));
     }
 }
+
 
 
 
