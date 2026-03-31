@@ -46,14 +46,21 @@ class FreeBWithEPromotionTest {
     }
 
     @Test
-    void shouldNotAllowBNegativeValues(){
+    void shouldNotAllowBNegativeValues() {
         Map<String, Integer> items = new HashMap<>();
         items.put("E", 4);
         items.put("B", 1);
 
         promotion.apply(items);
-        assertEquals(2, items.get("B"));
+        assertEquals(0, items.get("B"));
     }
+
+    @Test
+    void shouldHandleNoBInBasket(){
+        Map<String, Integer> items = new HashMap<>();
+        items.put();
+    }
+}
 
 
 
