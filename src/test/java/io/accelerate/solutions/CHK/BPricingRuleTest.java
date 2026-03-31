@@ -36,8 +36,14 @@ class BPricingRuleTest {
     }
 
     @ParameterizedTest
-    void shouldIgnoreOtherSkus(){
-
+    @CsvSource({
+            "A, 5",
+            "C, 3",
+            "D, 10"
+    })
+    void shouldIgnoreOtherSkus(String sku, int count){
+        items.put(sku, count);
+        int result = pricingRule.calculate()
     }
 
 }
