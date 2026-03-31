@@ -46,7 +46,19 @@ class CheckoutContextTest {
 
     @Test
     void shouldAccumulateTotal(){
-        context.addToTotal();
+        context.addToTotal(50);
+        context.addToTotal(30);
+        assertEquals(80, context.getTotal());
     }
 
+    @Test
+    void shouldStartWithZeroTotal(){
+        assertEquals(0, context.getTotal());
+    }
+
+    @Test
+    void shouldReflectExternalMapChanges(){
+        items.put("A", 10);
+        assertEquals(10, context.getCount("");
+    }
 }
