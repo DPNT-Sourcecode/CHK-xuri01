@@ -27,7 +27,13 @@ class CheckoutContextTest {
         assertEquals(1, context.getCount("B"));
     }
 
-    void shouldUpdateItem(){
+    @Test
+    void shouldReturnZeroForMissingSku(){
+        assertEquals(0, context.getCount("C"));
+    }
+
+    @Test
+    void shouldUpdateItemCount(){
         
     }
 
