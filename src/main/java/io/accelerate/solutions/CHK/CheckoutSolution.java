@@ -25,7 +25,7 @@ public class CheckoutSolution {
         for (char c : items.toCharArray()) {
             String sku = String.valueOf(c);
 
-            if (isValidSku(sku)) {
+            if (!isValidSku(sku)) {
                 return -1;
             }
 
