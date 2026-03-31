@@ -11,7 +11,3 @@ public class FreeMWithNPromotion implements Promotion{
         itemCounts.put("M", Math.max(0, currentM - freeM));
     }
 }
-
-
-
-
