@@ -34,7 +34,8 @@ class CheckoutContextTest {
 
     @Test
     void shouldUpdateExistingSkuCount(){
-        context.setCount();
+        context.setCount("A", 5);
+        assertEquals(5, context.getCount("A"));
     }
 
     @Test
@@ -47,6 +48,11 @@ class CheckoutContextTest {
     void shouldAddNewSkuWhenSettingCount(){
         context.setCount("C", 3);
         assertEquals(3, context.getCount("C"));
+    }
+
+    @Test
+    void shouldAddNewSkuWhenSettingCount(){
+        
     }
 
     @Test
@@ -67,4 +73,5 @@ class CheckoutContextTest {
         assertEquals(10, context.getCount("A"));
     }
 }
+
 
