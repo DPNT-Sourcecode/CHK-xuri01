@@ -25,4 +25,18 @@ class DefaultPricingRuleTest {
         int result = pricingRule.calculate(items);
         assertEquals(20, result);
     }
+
+    @Test
+    void shouldCalculatePriceForMultipleItem(){
+        items.put("C", 3);
+        int result = pricingRule.calculate(items);
+        assertEquals(60, result);
+    }
+
+    @Test
+    void shouldIgnoreOtherSkus(){
+        items.put("A", 5);
+        items.put("B", 2);
+        int result = pricingRule.calculate(items)
+    }
 }
