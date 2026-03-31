@@ -31,11 +31,11 @@ class CheckoutSolutionTest {
     @ParameterizedTest(name = "{0} -> {1}")
     @CsvSource({
             "AAA, 130",
-            "AAAA, 200",
-            "AAAAAA"
+            "AAAA, 180",
+            "AAAAAA, 250"
     })
     public void shouldApplySpecialOffersForA(String items, int expected){
-
+        assertEquals(expected, checkoutSolution.checkout(items));
     }
 
     @Test
