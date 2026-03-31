@@ -47,12 +47,11 @@ class CheckoutSolutionTest {
     @CsvSource({
             "'',0"
     })
-    public void shouldReturnZeroForEmpty() {
-        
-        assertEquals(0, checkoutSolution.checkout(""), "Empty String should cost 0 ");
-        assertEquals(0, checkoutSolution.checkout(null), "Null String should cost 0 ");
-
+    public void shouldReturnZeroForEmpty(String input, int expected) {
+        assertEquals(expected, checkoutSolution.checkout(input));
     }
+
+    void shouldReturnZero
 
     @Test
     public void checkoutSpecialOffersA() {
@@ -87,4 +86,5 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 }
+
 
