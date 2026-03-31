@@ -44,6 +44,6 @@ public class CheckoutSolution {
     }
 
     private boolean isValidSku(String sku) {
-        return List.of("A", "B", "C", "D", "E").contains(sku);
+        return List.of("A", "B", "C", "D", "E","F").contains(sku);
     }
 }
