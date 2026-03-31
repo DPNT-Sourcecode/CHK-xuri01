@@ -37,6 +37,16 @@ class DefaultPricingRuleTest {
     void shouldIgnoreOtherSkus(){
         items.put("A", 5);
         items.put("B", 2);
-        int result = pricingRule.calculate(items)
+        int result = pricingRule.calculate(items);
+        assertEquals(0, result);
+    }
+
+    @Test
+    void shouldWorkWithDifferentSkuAndPrice(){
+        DefaultPricingRule rule = new DefaultPricingRule("D", 15);
+        items.put("D", 4);
+
+        int result = rule.calculate(items);
+        assertEquals(60, result);
     }
 }
