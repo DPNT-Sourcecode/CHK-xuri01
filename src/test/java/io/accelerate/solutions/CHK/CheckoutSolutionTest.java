@@ -16,7 +16,7 @@ class CheckoutSolutionTest {
         checkoutSolution = new CheckoutSolution();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Single item {0} -> {1} ")
     @CsvSource({"A, 50", "B, 30", "C, 20", "D, 15", "E, 40"})
     public void checkoutSingleItems(String input, int expected) {
         assertEquals(expected, checkoutSolution.checkout(input));
