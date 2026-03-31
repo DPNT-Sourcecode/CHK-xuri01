@@ -56,10 +56,11 @@ class FreeBWithEPromotionTest {
     }
 
     @Test
-    void shouldHandleNoBInBasket(){
+    void shouldHandleNoBInBasket() {
         Map<String, Integer> items = new HashMap<>();
         items.put("E", 2);
         promotion.apply(items);
         assertEquals(0, items.getOrDefault("B", 0));
     }
 }
+
