@@ -41,8 +41,16 @@ class FPricingRuleTest {
     }
 
     @Test
-    void shouldApplyFreeItemForThreeFs(){
-        
+    void shouldApplyFreeItemForThreeFs() {
+        Map<String, Integer> items = new HashMap<>();
+        items.put("F", 3);
+        int result = pricingRule.calculate(items);
+        assertEquals(20, result);
     }
 
+    @Test
+    void shouldApplyFreeItemForThreeItems(){
+
     }
+
+}
