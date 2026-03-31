@@ -35,8 +35,18 @@ class CheckoutContextTest {
     @Test
     void shouldUpdateItemCount(){
         context.setCount("A", 5);
-        assertEquals();
+        assertEquals(5, context.getCount("A"));
     }
 
+    @Test
+    void shouldAddNewSkuWhenSettingCount(){
+        context.setCount("C", 3);
+        assertEquals(3, context.getCount("C"));
+    }
+
+    @Test
+    void shouldAccumulateTotal(){
+        context.addToTotal();
+    }
 
 }
