@@ -63,4 +63,3 @@ class FreeBWithEPromotionTest {
         assertEquals(0, items.getOrDefault("B", 0));
     }
 }
-

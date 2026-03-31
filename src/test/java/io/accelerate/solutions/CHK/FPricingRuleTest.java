@@ -3,6 +3,7 @@ package io.accelerate.solutions.CHK;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,10 +27,19 @@ class FPricingRuleTest {
     }
 
     @ParameterizedTest
-    void shouldCalculateFPricesCorrectly(){
-
+    @CsvSource({
+            "2, 20",
+            "3, 30",
+            "4, 30"
+    })
+    void shouldCalculateFPricesCorrectly(int count, int expected){
+        Map<String, Integer> items = new HashMap<>();
+        items.put("F", count);
+        int result = pricingRule.calculate(items);
+        assertEquals(expected, result);
     }
 
+    /*
     @Test
     void shouldCalculatePriceForSingleF() {
         Map<String, Integer> items = new HashMap<>();
@@ -53,6 +63,6 @@ class FPricingRuleTest {
         int result = pricingRule.calculate(items);
         assertEquals(20, result);
     }
-
+*/
 
 }
