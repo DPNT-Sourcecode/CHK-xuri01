@@ -24,7 +24,11 @@ class FPricingRuleTest {
         assertEquals(0, result);
     }
 
-    void shouldCalculatePrice
+    @Test
+    void shouldCalculatePriceForSingleF(){
+        Map<String, Integer> items = new HashMap<>();
+        items.
+    }
 
 
 }
