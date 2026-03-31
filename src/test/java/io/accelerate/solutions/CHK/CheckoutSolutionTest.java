@@ -22,7 +22,8 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(input));
     }
 
-    @Test
+    @ParameterizedTest(name = "{0} -> {1}")
+    @CsvSource({"AB, 80", "CD, 35", })
     public void testMultipleItemsWithOffers() {
         assertEquals(50 + 30, checkoutSolution.checkout("AB"), "A+B should cost 80");
         assertEquals(20 + 15, checkoutSolution.checkout("CD"), "C + D should 35");
@@ -75,4 +76,5 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 }
+
 
