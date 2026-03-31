@@ -34,7 +34,9 @@ class CheckoutContextTest {
 
     @Test
     void shouldUpdateItemCount(){
-        
+        context.setCount("A", 5);
+        assertEquals();
     }
+
 
 }
