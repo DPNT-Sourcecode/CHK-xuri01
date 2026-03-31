@@ -1,9 +1,12 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CheckoutSolution {
+
+    private final List<Promotion> promotions = List.of(new)
 
     private static final Map<String, Integer> PRICES = Map.of(
             "A", 50,
