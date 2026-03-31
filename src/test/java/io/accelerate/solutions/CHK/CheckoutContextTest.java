@@ -1,6 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +21,9 @@ class CheckoutContextTest {
         context = new CheckoutContext(items);
     }
 
+    @Test
     void shouldReturnCorrectItemCounts(){
-        
+        assertEquals(2, )
     }
 
 }
