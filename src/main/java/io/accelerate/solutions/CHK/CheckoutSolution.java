@@ -6,16 +6,15 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    private final List<Promotion> promotions = List.of(new)
+    private final List<Promotion> promotions = List.of(new FreeBWithEPromotion());
 
-    private static final Map<String, Integer> PRICES = Map.of(
-            "A", 50,
-            "B", 30,
-            "C", 20,
-            "D", 15,
-            "E",  40
+    private final List<PricingRule> pricingRules = List.of(
+            new APricingRule(),
+            new BPricingRule(),
+            new DefaultPricingRule("C", 20),
+            new DefaultPricingRule("D", 15),
+            new DefaultPricingRule("E", 40)
     );
-
 
     public Integer checkout(String items) {
 
@@ -73,3 +72,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
