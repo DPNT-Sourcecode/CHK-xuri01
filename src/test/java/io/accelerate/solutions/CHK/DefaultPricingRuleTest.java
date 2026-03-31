@@ -21,19 +21,6 @@ class DefaultPricingRuleTest {
         items = new HashMap<>();
     }
 
-    @Test
-    void shouldCalculatePriceForSingleItem(){
-        items.put("C", 1);
-        int result = pricingRule.calculate(items);
-        assertEquals(20, result);
-    }
-
-    @Test
-    void shouldCalculatePriceForMultipleItem(){
-        items.put("C", 3);
-        int result = pricingRule.calculate(items);
-        assertEquals(60, result);
-    }
 
     @ParameterizedTest
     @CsvSource({
@@ -42,7 +29,7 @@ class DefaultPricingRuleTest {
     })
     void shouldCalculate(int count, int expected){
         items.put("C", count);
-        assertEquals(expected, pricingRule.calculate());
+        assertEquals(expected, pricingRule.calculate(items));
     }
 
     @Test
@@ -62,3 +49,4 @@ class DefaultPricingRuleTest {
         assertEquals(60, result);
     }
 }
+
