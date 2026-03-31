@@ -42,9 +42,20 @@ class FreeBWithEPromotionTest {
         items.put("B", 3);
 
         promotion.apply(items);
-        assertEquals(0, items.get("B"));
+        assertEquals(2, items.get("B"));
+    }
+
+    @Test
+    void shouldNotAllowBNegativeValues(){
+        Map<String, Integer> items = new HashMap<>();
+        items.put("E", 4);
+        items.put("B", 1);
+
+        promotion.apply(items);
+        assertEquals(2, items.get("B"));
     }
 
 
 
 }
+
