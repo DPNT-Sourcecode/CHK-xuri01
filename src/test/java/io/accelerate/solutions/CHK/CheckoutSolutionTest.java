@@ -24,7 +24,7 @@ class CheckoutSolutionTest {
 
     @ParameterizedTest(name = "{0} -> {1}")
     @CsvSource({"AB, 80", "CD, 35", "ABCD, 115"})
-    public void testMultipleItemsWithOffers(String items, int expected) {
+    public void shouldCalculateMixedBaskets(String items, int expected) {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 
@@ -73,5 +73,6 @@ class CheckoutSolutionTest {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 }
+
 
 
