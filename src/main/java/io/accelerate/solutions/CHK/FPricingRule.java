@@ -1,6 +1,18 @@
 package io.accelerate.solutions.CHK;
 
-public class FPricingRule implements PricingRule{
-    
+import java.util.Map;
 
+public class FPricingRule implements PricingRule {
+    private static final String SKU = "F";
+    private static final int UNIT_PRICE = 10;
+    private static final int GROUP_SIZE = 3;
+
+    @Override
+    public int calculate(Map<String, Integer> itemCounts) {
+        int count = itemCounts.getOrDefault(SKU, 0);
+        int freeItems = 
+
+        return 0;
+    }
 }
+
