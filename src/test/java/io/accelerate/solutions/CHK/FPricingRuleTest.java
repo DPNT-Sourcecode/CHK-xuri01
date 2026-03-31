@@ -1,0 +1,25 @@
+package io.accelerate.solutions.CHK;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class FPricingRuleTest {
+
+    private FPricingRule pricingRule;
+
+    @BeforeEach
+    void setUp(){
+        pricingRule = new FPricingRule();
+    }
+
+    @Test
+    void shouldCalculateReturnZeroWhenNoFItems(){
+        Map<String, Integer> items = new HashMap<>();
+        int result = 
+    }
+}
