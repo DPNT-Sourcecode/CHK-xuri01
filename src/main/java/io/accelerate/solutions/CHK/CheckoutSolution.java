@@ -25,12 +25,24 @@ public class CheckoutSolution {
         for (char c : items.toCharArray()) {
             String sku = String.valueOf(c);
 
-            if (!PRICES.containsKey(sku)) {
+            if (isValidSku(sku)) {
                 return -1;
             }
 
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
         }
+
+        for(Promotion promotion : promotions){
+            promotion.apply(itemCounts);
+        }
+
+        int total =0;
+        for(PricingRule rule : pricingRules){
+            total += rule.calculate(itemCounts);
+        }
+
+
+
 
         applyFreeBPromotion(itemCounts);
         int total = 0;
@@ -72,4 +84,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
