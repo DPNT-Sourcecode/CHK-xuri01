@@ -3,25 +3,30 @@ package io.accelerate.solutions.CHK;
 import java.util.Map;
 
 public class CheckoutContext {
-    private final Map<String, Integer> itemCount;
+    private final Map<String, Integer> itemCounts;
     private int total = 0;
 
-    public CheckoutContext(Map<String, Integer> itemCount) {
-        this.itemCount = itemCount;
+    public CheckoutContext(Map<String, Integer> itemCounts) {
+        this.itemCounts = itemCounts;
     }
 
-    public Map<String, Integer> getItemCounts(){
+    public Map<String, Integer> getItemCounts() {
         return itemCounts;
     }
 
-    public int getCount(String sku){
+    public int getCount(String sku) {
         return getItemCounts().getOrDefault(sku, 0);
     }
 
-    public void setCount(String sku, int value){
-        itemCounts.put(sku, value)
+    public void setCount(String sku, int value) {
+        itemCounts.put(sku, value);
+    }
+
+    public void addToTotal(int value) {
+        total += value;
+    }
+
+    public int getTotal() {
+        return total;
     }
 }
-
-
-
