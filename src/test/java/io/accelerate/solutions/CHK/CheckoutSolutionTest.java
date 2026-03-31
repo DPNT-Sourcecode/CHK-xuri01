@@ -23,12 +23,9 @@ class CheckoutSolutionTest {
     }
 
     @ParameterizedTest(name = "{0} -> {1}")
-    @CsvSource({"AB, 80", "CD, 35", })
-    public void testMultipleItemsWithOffers() {
-        assertEquals(50 + 30, checkoutSolution.checkout("AB"), "A+B should cost 80");
-        assertEquals(20 + 15, checkoutSolution.checkout("CD"), "C + D should 35");
-        assertEquals(50 + 30 + 20 + 15, checkoutSolution.checkout("ABCD"), "A + B + C + D  should cost 115");
-
+    @CsvSource({"AB, 80", "CD, 35", "ABCD, 115"})
+    public void testMultipleItemsWithOffers(String items, int expected) {
+        assertEquals(expected, checkoutSolution.checkout(items));
     }
 
     @Test
@@ -72,7 +69,7 @@ class CheckoutSolutionTest {
             "FFFF, 30",
             "FFFFFF, 40"
     })
-    void shouldApplyFPromotion(String items, int expected){
+    void shouldApplyFPromotion(String items, int expected) {
         assertEquals(expected, checkoutSolution.checkout(items));
     }
 }
