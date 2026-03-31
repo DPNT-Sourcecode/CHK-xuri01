@@ -2,6 +2,8 @@ package io.accelerate.solutions.CHK;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +33,16 @@ class DefaultPricingRuleTest {
         items.put("C", 3);
         int result = pricingRule.calculate(items);
         assertEquals(60, result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 20",
+            "3, 60"
+    })
+    void shouldCalculate(int count, int expected){
+        items.put("C", count);
+        assertEquals(expected, pricingRule.calculate());
     }
 
     @Test
