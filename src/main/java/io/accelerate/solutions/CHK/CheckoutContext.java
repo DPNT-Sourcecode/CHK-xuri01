@@ -18,9 +18,10 @@ public class CheckoutContext {
         return getItemCounts().getOrDefault(sku, 0);
     }
 
-    public void setCount(String ){
-
+    public void setCount(String sku, int value){
+        itemCounts.put(sku, value)
     }
 }
+
 
 
