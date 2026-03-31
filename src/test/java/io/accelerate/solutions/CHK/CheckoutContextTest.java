@@ -51,11 +51,6 @@ class CheckoutContextTest {
     }
 
     @Test
-    void shouldAddNewSkuWhenSettingCount(){
-        
-    }
-
-    @Test
     void shouldAccumulateTotal(){
         context.addToTotal(50);
         context.addToTotal(30);
@@ -72,6 +67,8 @@ class CheckoutContextTest {
         items.put("A", 10);
         assertEquals(10, context.getCount("A"));
     }
+
+    void 
 }
 
 
