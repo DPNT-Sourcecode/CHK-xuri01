@@ -13,13 +13,18 @@ class FPricingRuleTest {
     private FPricingRule pricingRule;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         pricingRule = new FPricingRule();
     }
 
     @Test
-    void shouldCalculateReturnZeroWhenNoFItems(){
+    void shouldCalculateReturnZeroWhenNoFItems() {
         Map<String, Integer> items = new HashMap<>();
-        int result = 
+        int result = pricingRule.calculate(items);
+        assertEquals(0, result);
     }
+
+    void shouldCalculatePrice
+
+
 }
