@@ -41,16 +41,13 @@ public class CheckoutSolution {
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
         }
 
-        int total = 0;
         for (Promotion promotion : promotions) {
-            total = promotion.apply(itemCounts, total);
+            promotion.apply(itemCounts);
         }
-
+        int total = 0;
         for (PricingRule rule : pricingRules) {
             total += rule.calculate(itemCounts);
         }
         return total;
     }
 }
-
-
