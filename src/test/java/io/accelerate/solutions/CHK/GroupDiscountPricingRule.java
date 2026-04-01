@@ -35,16 +35,27 @@ public class GroupDiscountPricingRule implements PricingRule {
         int total = 0;
         int index = 0;
 
-        //3 - Apply 
+        //3 - Apply group discount
         while(index + groupSize <= allItems.size()){
             total += groupPrice;
             index += groupSize;
         }
 
+        //4 - Remaining items -> Normal price
+        while(index < allItems.size()){
+            total += allItems.get(index);
+            index ++;
+        }
+
+        //5 - Zero out consumed SKUs. So they are not double counted
+        for(String sku)
+
+
         return 0;
     }
 
 }
+
 
 
 
