@@ -18,6 +18,7 @@ public class CheckoutSolution {
 
     private final List<PricingRule> pricingRules = List.of(
 
+            new MultiPicingRule(A. )
             new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),
             new MultiBuyPricingRule("B", 30, Map.of(2, 45)),
             new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
