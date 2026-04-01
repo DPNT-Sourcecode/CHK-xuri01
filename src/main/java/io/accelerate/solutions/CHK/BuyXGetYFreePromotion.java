@@ -14,6 +14,7 @@ public class BuyXGetYFreePromotion implements Promotion {
         this.freeSku = freeSku;
     }
 
+    @Override
     public void apply(Map<String, Integer> itemCounts) {
         int triggerCount = itemCounts.getOrDefault(triggerSku, 0);
         int freeItems = triggerCount / triggerQuantity;
