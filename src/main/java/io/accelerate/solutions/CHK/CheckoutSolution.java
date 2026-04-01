@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class CheckoutSolution {
 
-    private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F");
+    private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F",);
 
     private final List<Promotion> promotions = List.of(
             new BuyXGetYFreePromotion("E", 2, "B"),
