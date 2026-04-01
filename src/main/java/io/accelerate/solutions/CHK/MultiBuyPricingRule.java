@@ -14,9 +14,7 @@ public class MultiBuyPricingRule implements PricingRule {
         this.sku = sku;
         this.unitPrice = unitPrice;
         this.offers = offers;
-
-
-        this.sortedOffers = offers.entrySet().stream().sorted((a,b) -> b.getKey() - a.getKey())
+        this.sortedOffers = offers.entrySet().stream().sorted((a, b) -> b.getKey() - a.getKey()).toList();
     }
 
     @Override
@@ -38,5 +36,6 @@ public class MultiBuyPricingRule implements PricingRule {
         return total;
     }
 }
+
 
 
