@@ -59,13 +59,12 @@ class FreeMWithNPromotionTest {
     }
 
     @Test
-    void shouldHandleMissingM(){
+    void shouldHandleMissingN(){
         Map<String, Integer> itemCounts = new HashMap<>();
-        itemCounts.put("N", 6);
-        itemCounts.put("M", 1);
+        itemCounts.put("M", 4);
 
         promotion.apply(itemCounts);
-        assertEquals(0, itemCounts.get("M"));
+        assertEquals(4, itemCounts.get("M"));
     }
 
 }
