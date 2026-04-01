@@ -11,7 +11,16 @@ public class CheckoutSolution {
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
     private final List<PricingRule> pricingRules = List.of(
-            new GroupDiscountPricingRules
+            new GroupDiscountPricingRule(
+                    List.of("S", "T", "X", "Y", "Z"),
+                    Map.of("S", 20,
+                            "T", 20,
+                            "X", 90,
+                            "Y", 10,
+                            "Z", 50),
+                    3,
+                    45
+            )
     );
 
     private final List<Promotion> promotions = List.of(
@@ -52,7 +61,7 @@ public class CheckoutSolution {
             new DefaultPricingRule("U", 40)
 
 
-            );
+    );
 
     public Integer checkout(String items) {
 
@@ -80,3 +89,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
