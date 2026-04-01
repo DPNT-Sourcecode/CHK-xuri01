@@ -24,9 +24,9 @@ public class GroupDiscountPricingRule implements PricingRule {
         List<Integer> allItems = new ArrayList<>();
 
         //1. Collect all applicable items
-        for(String sku: skus){
+        for (String sku : skus) {
             int count = itemCounts.getOrDefault(sku, 0);
-            for(int i=0; i < count; i++){
+            for (int i = 0; i < count; i++) {
                 allItems.add(unitPrices.get(sku));
             }
         }
@@ -36,25 +36,26 @@ public class GroupDiscountPricingRule implements PricingRule {
         int index = 0;
 
         //3 - Apply group discount
-        while(index + groupSize <= allItems.size()){
+        while (index + groupSize <= allItems.size()) {
             total += groupPrice;
             index += groupSize;
         }
 
         //4 - Remaining items -> Normal price
-        while(index < allItems.size()){
+        while (index < allItems.size()) {
             total += allItems.get(index);
-            index ++;
+            index++;
         }
 
         //5 - Zero out consumed SKUs. So they are not double counted
-        for(String sku)
-
-
-        return 0;
+        for (String sku : skus) {
+            itemCounts.put(sku, 0);
+        }
+        return total;
     }
 
 }
+
 
 
 
