@@ -3,7 +3,7 @@ package io.accelerate.solutions.CHK;
 import java.util.Comparator;
 import java.util.Map;
 
-public class MultiBuyPricingRule implements PricingRule{
+public class MultiBuyPricingRule implements PricingRule {
 
     private final String sku;
     private final int unitPrice;
@@ -20,30 +20,21 @@ public class MultiBuyPricingRule implements PricingRule{
         int count = itemCounts.getOrDefault(sku, 0);
         int total = 0;
 
-        var sortedQuantities = offers.keySet().stream().sorted((a,b) -> b - a).toList();
+        var sortedQuantities = offers.keySet().stream().sorted((a, b) -> b - a).toList();
 
-        for(int quantity : sortedQuantities){
+        for (int quantity : sortedQuantities) {
             int offerPrice = offers.get(quantity);
             int times = count / quantity;
             total += times * offerPrice;
-            count %=quantity;
+            count %= quantity;
         }
 
         total += count * unitPrice;
 
-        var sortedOffers = offers.keySet().stream().sorted(Comparator.reverseOrder()).toList();
-
-
-        for(int offerQty : sortedOffers){
-            int offerPrice = offers.get(offerQty);
-            total += (count / offerQty) * offerPrice;
-            count += count * unitPrice;
-            return total;
-        }
-
-        return 0;
+        return total;
     }
 }
+
 
 
 
