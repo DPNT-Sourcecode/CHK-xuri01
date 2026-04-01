@@ -24,4 +24,3 @@ public class BuyXGetYFreePromotion implements Promotion {
         itemCounts.put(freeSku, chargeableItems);
     }
 }
-
