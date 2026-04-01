@@ -18,14 +18,16 @@ class MultiBuyPricingRuleTest {
     }
 
     @Test
-    void shouldApplyBestCombination(){
+    void shouldApplyBestCombination() {
         var rule = new MultiBuyPricingRule("A", 50, Map.of(
-                5,200,
+                5, 200,
                 3, 130
         ));
-        Map 
+        var items = new HashMap<String, Integer>();
+        items.put("A", 6);
+
+        assertEquals(250, rule.calculate(items));
 
     }
-
 
 }
