@@ -7,7 +7,8 @@ import java.util.Set;
 
 public class CheckoutSolution {
 
-    private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F",);
+    private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F", "G",
+            "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
     private final List<Promotion> promotions = List.of(
             new BuyXGetYFreePromotion("E", 2, "B"),
@@ -51,3 +52,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
