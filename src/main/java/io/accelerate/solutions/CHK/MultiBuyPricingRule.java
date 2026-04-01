@@ -21,8 +21,18 @@ public class MultiBuyPricingRule implements PricingRule{
         int total = 0;
 
         var sortedQuantities = offers.keySet().stream().sorted((a,b) -> b - a).toList();
-        
+
+        for(int quantity : sortedQuantities){
+            int offerPrice = offers.get(quantity);
+            int times = count / quantity;
+            total += times * offerPrice;
+            count %=quantity;
+        }
+
+        total += count * unitPrice;
+
         var sortedOffers = offers.keySet().stream().sorted(Comparator.reverseOrder()).toList();
+
 
         for(int offerQty : sortedOffers){
             int offerPrice = offers.get(offerQty);
@@ -34,5 +44,6 @@ public class MultiBuyPricingRule implements PricingRule{
         return 0;
     }
 }
+
 
 
