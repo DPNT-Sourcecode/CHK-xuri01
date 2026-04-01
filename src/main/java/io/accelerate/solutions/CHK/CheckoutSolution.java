@@ -27,16 +27,18 @@ public class CheckoutSolution {
             new MultiBuyPricingRule("V", 50, Map.of(3, 130, 2, 90)),
             new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
             new BuyNGetOneFreeSameSkuPricingRule("U", 40, 4),
-            new GroupDiscountPricingRule(List.of("S", "T", "X", "Y", "Z"),
-                    3,
-                    45,
+            new GroupDiscountPricingRule(
+                    List.of("S", "T", "X", "Y", "Z"),
                     Map.of(
                             "S", 30,
                             "T", 20,
                             "X", 90,
                             "Y", 10,
-                            "Z", 50)
+                            "Z", 50),
+                    3,
+                    45
             ),
+
             new DefaultPricingRule("C", 20),
             new DefaultPricingRule("D", 15),
             new DefaultPricingRule("E", 40),
@@ -46,34 +48,28 @@ public class CheckoutSolution {
             new DefaultPricingRule("L", 90),
             new DefaultPricingRule("M", 15),
             new DefaultPricingRule("O", 10),
-            new DefaultPricingRule("W", 20)
+            new DefaultPricingRule("W", 20),
+            new DefaultPricingRule("S", 30),
+            new DefaultPricingRule("T", 20),
+            new DefaultPricingRule("X", 90),
+            new DefaultPricingRule("Y", 10),
+            new DefaultPricingRule("Z", 50)
 
-    );
+            );
 
     public Integer checkout(String items) {
+        if (isEmpty(items)) return 0;
 
-        if (items == null || items.isEmpty()) return 0;
-
-        var itemCounts = new HashMap<String, Integer>();
-
-        for (char c : items.toCharArray()) {
-            var sku = String.valueOf(c);
-
-            if (!VALID_SKUS.contains(sku)) {
+        try {
+            var basket = buildItemCounts(items);
+            if (basket == null) {
                 return -1;
             }
-
-            itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
+            applyPromotions(basket);
+            return calculateTotal(basket);
+        } catch (IllegalArgumentException e) {
+            return -1;
         }
-
-        for (Promotion promotion : promotions) {
-            promotion.apply(itemCounts);
-        }
-        int total = 0;
-        for (PricingRule rule : pricingRules) {
-            total += rule.calculate(itemCounts);
-        }
-        return total;
     }
 
     private Map<String, Integer> buildItemCounts(String items) {
@@ -91,4 +87,24 @@ public class CheckoutSolution {
 
         return itemCounts;
     }
+
+    private void applyPromotions(Map<String, Integer> itemCounts) {
+        for (Promotion promotion : promotions) {
+            promotion.apply(itemCounts);
+        }
+    }
+
+    private int calculateTotal(Map<String, Integer> itemCounts) {
+        int total = 0;
+        for (PricingRule rule : pricingRules) {
+            total += rule.calculate(itemCounts);
+        }
+        return total;
+    }
+
+
+    private boolean isEmpty(String items) {
+        return items == null || items.isEmpty();
+    }
+
 }
