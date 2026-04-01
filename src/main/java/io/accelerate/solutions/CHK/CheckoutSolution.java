@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    private final List<Promotion> promotions = List.of(new FreeBWithEPromotion());
+    private final List<Promotion> promotions = List.of(new BuyXGetYFreePromotion());
 
     private final List<PricingRule> pricingRules = List.of(
             new APricingRule(),
