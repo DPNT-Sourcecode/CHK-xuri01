@@ -27,4 +27,20 @@ class FreeMWithNPromotionTest {
 
     }
 
+    @Test
+    void shouldApplyOneFreeMWhenThreeN(){
+        Map<String, Integer> itemCounts = new HashMap<>();
+        itemCounts.put("N", 3);
+        itemCounts.put("M", 2);
+
+        promotion.apply(itemCounts);
+        assertEquals(1, itemCounts.get("M"));
+
+    }
+
+    @Test
+    void shouldApplyMultipleFreeM(){
+        Map<>
+    }
+
 }
