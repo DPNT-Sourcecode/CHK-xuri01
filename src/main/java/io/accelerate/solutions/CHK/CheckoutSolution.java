@@ -25,9 +25,14 @@ public class CheckoutSolution {
             new MultiBuyPricingRule("P", 50, Map.of(5, 200)),
             new MultiBuyPricingRule("Q", 30, Map.of(3, 80)),
             new MultiBuyPricingRule("V", 50, Map.of(3, 130,2,90)),
+            new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
+            new BuyNGetOneFreeSameSkuPricingRule("U", 40, 4),
+            new GroupDiscountPricingRule(List.of("S", "T", "X", "Y", "Z"),
+                    3,
+                    45,
+                    Map.of()
 
-            new MultiBuyPricingRule("V", 50, Map.of(3, 130,2,90)),
-            
+
 
 
                     ]
@@ -64,6 +69,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
