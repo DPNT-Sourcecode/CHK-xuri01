@@ -1,5 +1,6 @@
 package io.accelerate.solutions.CHK;
 
+import java.util.Comparator;
 import java.util.Map;
 
 public class MultiBuyPricingRule implements PricingRule{
@@ -16,7 +17,17 @@ public class MultiBuyPricingRule implements PricingRule{
 
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
-        int count = itemCounts.
+        int count = itemCounts.getOrDefault(sku, 0);
+        int total = 0;
+
+        var sortedOffers = offers.keySet().stream().sorted(Comparator.reverseOrder()).toList();
+
+        for(int offerQty : sortedOffers){
+            int offerPrice = offers.get(offerQty);
+            
+        }
+
         return 0;
     }
 }
+
