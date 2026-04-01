@@ -54,11 +54,9 @@ public class CheckoutSolution {
 
         if (items == null || items.isEmpty()) return 0;
 
-        var itemCounts = buildItemCounts(items);
-        if (itemCounts == null) return -1;
-        applyPromotions(itemCounts);
+        var itemCounts = new HashMap<String, Integer>();
 
-        /*for (char c : items.toCharArray()) {
+        for (char c : items.toCharArray()) {
             var sku = String.valueOf(c);
 
             if (!VALID_SKUS.contains(sku)) {
@@ -66,18 +64,16 @@ public class CheckoutSolution {
             }
 
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
-        }*/
+        }
 
-       /* for (Promotion promotion : promotions) {
+        for (Promotion promotion : promotions) {
             promotion.apply(itemCounts);
-        }*/
-
-        /*int total = 0;
+        }
+        int total = 0;
         for (PricingRule rule : pricingRules) {
             total += rule.calculate(itemCounts);
         }
-        return total;*/
-        return calculateTotal(itemCounts);
+        return total;
     }
 
     private Map<String, Integer> buildItemCounts(String items) {
@@ -94,19 +90,5 @@ public class CheckoutSolution {
         }
 
         return itemCounts;
-    }
-
-    private void applyPromotions(Map<String, Integer> itemCounts) {
-        for (Promotion promotion : promotions) {
-            promotion.apply(itemCounts);
-        }
-    }
-
-    private int calculateTotal(Map<String, Integer> itemCounts){
-        int total = 0;
-        for(PricingRule rule : pricingRules){
-            total += rule.calculate(itemCounts);
-        }
-        return total;
     }
 }
