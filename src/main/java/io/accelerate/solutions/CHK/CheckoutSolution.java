@@ -15,12 +15,8 @@ public class CheckoutSolution {
     private final List<PricingRule> pricingRules = List.of(
 
             new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),
-            new MultiBuyPricingRule("B", 30, Map.of(5, 200, 3, 130)),
-
-
-            new APricingRule(),
-            new BPricingRule(),
-            new FPricingRule(),
+            new MultiBuyPricingRule("B", 30, Map.of(2, 45)),
+            new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
             new DefaultPricingRule("C", 20),
             new DefaultPricingRule("D", 15),
             new DefaultPricingRule("E", 40)
@@ -44,7 +40,6 @@ public class CheckoutSolution {
 
         int total = 0;
         for (Promotion promotion : promotions) {
-           // promotion.apply(itemCounts);
             total = promotion.apply(itemCounts, total);
         }
 
@@ -55,6 +50,6 @@ public class CheckoutSolution {
     }
 
     private boolean isValidSku(String sku) {
-        return List.of("A", "B", "C", "D", "E","F").contains(sku);
+        return List.of("A", "B", "C", "D", "E", "F").contains(sku);
     }
 }
