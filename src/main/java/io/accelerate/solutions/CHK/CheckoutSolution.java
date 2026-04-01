@@ -30,17 +30,16 @@ public class CheckoutSolution {
             new GroupDiscountPricingRule(List.of("S", "T", "X", "Y", "Z"),
                     3,
                     45,
-                    Map.of()
-
-
-
-
-                    ]
-            new MultiBuyPricingRule("B", 30, Map.of(2, 45)),
-            new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
+                    Map.of("S", 30, "T", 20, "X", 90, "Y", 10, "Z", 50)
+            ),
             new DefaultPricingRule("C", 20),
             new DefaultPricingRule("D", 15),
-            new DefaultPricingRule("E", 40)
+            new DefaultPricingRule("E", 40),
+            new DefaultPricingRule("G", 20),
+            new DefaultPricingRule("i", 35),
+            
+    );
+    );
     );
 
     public Integer checkout(String items) {
@@ -69,6 +68,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
