@@ -39,5 +39,3 @@ public class GroupDiscountPricingRule implements PricingRule {
         return total;
     }
 }
-
-
