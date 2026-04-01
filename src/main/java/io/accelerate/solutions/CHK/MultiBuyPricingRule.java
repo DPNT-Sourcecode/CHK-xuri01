@@ -1,4 +1,22 @@
 package io.accelerate.solutions.CHK;
 
-public class MultiBuyPricingRule {
+import java.util.Map;
+
+public class MultiBuyPricingRule implements PricingRule{
+
+    private final String sku;
+    private final int unitPrice;
+    private final Map<Integer, Integer> offers;
+
+    public MultiBuyPricingRule(String sku, int unitPrice, Map<Integer, Integer> offers) {
+        this.sku = sku;
+        this.unitPrice = unitPrice;
+        this.offers = offers;
+    }
+
+    @Override
+    public int calculate(Map<String, Integer> itemCounts) {
+        int count = itemCounts.
+        return 0;
+    }
 }

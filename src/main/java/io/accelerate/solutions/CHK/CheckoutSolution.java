@@ -52,4 +52,3 @@ public class CheckoutSolution {
         return List.of("A", "B", "C", "D", "E","F").contains(sku);
     }
 }
-
