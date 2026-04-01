@@ -3,8 +3,11 @@ package io.accelerate.solutions.CHK;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CheckoutSolution {
+
+    private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F");
 
     private final List<Promotion> promotions = List.of(
             new BuyXGetYFreePromotion("E", 2, "B"),
@@ -53,3 +56,4 @@ public class CheckoutSolution {
         return List.of("A", "B", "C", "D", "E", "F").contains(sku);
     }
 }
+
