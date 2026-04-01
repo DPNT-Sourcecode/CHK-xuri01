@@ -1,6 +1,8 @@
 package io.accelerate.solutions.CHK;
 
-public class BuyXGetYFreePromotion implements Promotion{
+import java.util.Map;
+
+public class BuyXGetYFreePromotion implements Promotion {
     private final String triggerSku;
     private final int triggerQuantity;
     private final String freeSku;
@@ -12,5 +14,13 @@ public class BuyXGetYFreePromotion implements Promotion{
         this.freeSku = freeSku;
     }
 
-    public void apply(Map<>)
+    public void apply(Map<String, Integer> itemCounts) {
+        int triggerCount = itemCounts.getOrDefault(triggerSku, 0);
+        int freeItems = triggerCount / triggerQuantity;
+
+        int currentFreeItemCount = itemCounts.getOrDefault(freeSku, 0);
+        int chargeableItems = Math.max(0, currentFreeItemCount - freeItems);
+        itemCounts.put(freeSku, chargeableItems);
+    }
 }
+
