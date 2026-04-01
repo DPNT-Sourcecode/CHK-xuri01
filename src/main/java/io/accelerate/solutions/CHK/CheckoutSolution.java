@@ -46,21 +46,18 @@ public class CheckoutSolution {
             new DefaultPricingRule("L", 90),
             new DefaultPricingRule("M", 15),
             new DefaultPricingRule("O", 10),
-            new DefaultPricingRule("W", 20),
-            new DefaultPricingRule("N", 40),
-            new DefaultPricingRule("Q", 30),
-            new DefaultPricingRule("R", 50),
-            new DefaultPricingRule("U", 40)
+            new DefaultPricingRule("W", 20)
+
     );
 
     public Integer checkout(String items) {
 
         if (items == null || items.isEmpty()) return 0;
 
-        Map<String, Integer> itemCounts = new HashMap<>();
+        var itemCounts = new HashMap<String, Integer>();
 
         for (char c : items.toCharArray()) {
-            String sku = String.valueOf(c);
+            var sku = String.valueOf(c);
 
             if (!VALID_SKUS.contains(sku)) {
                 return -1;
@@ -79,6 +76,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
