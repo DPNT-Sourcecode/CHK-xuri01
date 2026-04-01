@@ -53,8 +53,6 @@ public class CheckoutSolution {
             new DefaultPricingRule("Q", 30),
             new DefaultPricingRule("R", 50),
             new DefaultPricingRule("U", 40)
-
-
     );
 
     public Integer checkout(String items) {
@@ -83,6 +81,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
