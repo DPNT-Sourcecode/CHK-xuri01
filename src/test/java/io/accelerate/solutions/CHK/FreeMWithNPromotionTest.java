@@ -40,7 +40,32 @@ class FreeMWithNPromotionTest {
 
     @Test
     void shouldApplyMultipleFreeM(){
-        Map<>
+        Map<String, Integer> itemCounts = new HashMap<>();
+        itemCounts.put("N", 6);
+        itemCounts.put("M", 5);
+
+        promotion.apply(itemCounts);
+        assertEquals(3, itemCounts.get("M"));
+    }
+
+    @Test
+    void shouldNotGoBelowZero(){
+        Map<String, Integer> itemCounts = new HashMap<>();
+        itemCounts.put("N", 6);
+        itemCounts.put("M", 1);
+
+        promotion.apply(itemCounts);
+        assertEquals(0, itemCounts.get("M"));
+    }
+
+    @Test
+    void shouldHandleMissingM(){
+        Map<String, Integer> itemCounts = new HashMap<>();
+        itemCounts.put("N", 6);
+        itemCounts.put("M", 1);
+
+        promotion.apply(itemCounts);
+        assertEquals(0, itemCounts.get("M"));
     }
 
 }
