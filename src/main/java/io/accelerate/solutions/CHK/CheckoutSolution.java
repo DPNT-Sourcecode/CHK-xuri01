@@ -54,7 +54,7 @@ public class CheckoutSolution {
 
         if (items == null || items.isEmpty()) return 0;
 
-        var itemCounts = new HashMap<String, Integer>();
+        var itemCounts = buildItemCounts(items);
 
         /*for (char c : items.toCharArray()) {
             var sku = String.valueOf(c);
@@ -90,5 +90,11 @@ public class CheckoutSolution {
         }
 
         return itemCounts;
+    }
+
+    private void applyPromotions(Map<String, Integer> itemCounts) {
+        for(Promotion promotion : promotions){
+            promotion.apply(itemCounts);
+        }
     }
 }
