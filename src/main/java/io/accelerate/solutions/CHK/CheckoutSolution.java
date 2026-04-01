@@ -75,4 +75,8 @@ public class CheckoutSolution {
         }
         return total;
     }
+
+    private Map<String, Integer> buildItemCounts(String items) {
+        var itemCounts = new <String, Integer> HashMap();
+    }
 }
