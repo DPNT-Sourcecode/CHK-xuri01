@@ -23,20 +23,29 @@ public class GroupDiscountPricingRule implements PricingRule {
     public int calculate(Map<String, Integer> itemCounts) {
         List<Integer> allItems = new ArrayList<>();
 
+        //1. Collect all applicable items
         for(String sku: skus){
             int count = itemCounts.getOrDefault(sku, 0);
             for(int i=0; i < count; i++){
                 allItems.add(unitPrices.get(sku));
             }
         }
+        //2 - Sort descending (expensive first -> best discount)
         allItems.sort(Comparator.reverseOrder());
         int total = 0;
-        
+        int index = 0;
+
+        //3 - Apply 
+        while(index + groupSize <= allItems.size()){
+            total += groupPrice;
+            index += groupSize;
+        }
 
         return 0;
     }
 
 }
+
 
 
 
