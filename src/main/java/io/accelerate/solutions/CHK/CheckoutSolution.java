@@ -72,11 +72,12 @@ public class CheckoutSolution {
             promotion.apply(itemCounts);
         }*/
 
-        int total = 0;
+        /*int total = 0;
         for (PricingRule rule : pricingRules) {
             total += rule.calculate(itemCounts);
         }
-        return total;
+        return total;*/
+        return calculateTotal(itemCounts);
     }
 
     private Map<String, Integer> buildItemCounts(String items) {
@@ -104,7 +105,8 @@ public class CheckoutSolution {
     private int calculateTotal(Map<String, Integer> itemCounts){
         int total = 0;
         for(PricingRule rule : pricingRules){
-            total += 
+            total += rule.calculate(itemCounts);
         }
+        return total;
     }
 }
