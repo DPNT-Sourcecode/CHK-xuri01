@@ -80,10 +80,10 @@ class CheckoutSolutionTest {
 
     @ParameterizedTest
     @CsvSource({
-            "AX",
             "A1",
             "a",
-            "Z"
+            "A$",
+            "ABCa"
     })
     public void shouldReturnMinusOneForInvalidInputs(String items) {
         assertEquals(-1, checkoutSolution.checkout(items));
