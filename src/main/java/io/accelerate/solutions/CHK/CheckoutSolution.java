@@ -19,7 +19,12 @@ public class CheckoutSolution {
     private final List<PricingRule> pricingRules = List.of(
 
             new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),[
-            new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),[
+            new MultiBuyPricingRule("B", 30, Map.of(2, 55)),
+            new MultiBuyPricingRule("H", 30, Map.of(2, 55)),
+            new MultiBuyPricingRule("K", 80, Map.of(2, )),
+
+
+            ,[
 
 
                     ]
@@ -56,4 +61,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
