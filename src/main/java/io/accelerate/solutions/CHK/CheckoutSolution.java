@@ -36,11 +36,13 @@ public class CheckoutSolution {
             new DefaultPricingRule("D", 15),
             new DefaultPricingRule("E", 40),
             new DefaultPricingRule("G", 20),
-            new DefaultPricingRule("i", 35),
-            
-    );
-    );
-    );
+            new DefaultPricingRule("I", 35),
+            new DefaultPricingRule("J", 60),
+            new DefaultPricingRule("L", 90),
+            new DefaultPricingRule("M", 15),
+            new DefaultPricingRule("O", 10),
+            new DefaultPricingRule("w", 20)
+            );
 
     public Integer checkout(String items) {
 
@@ -68,9 +70,3 @@ public class CheckoutSolution {
         return total;
     }
 }
-
-
-
-
-
-
