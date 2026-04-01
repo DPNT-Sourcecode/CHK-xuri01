@@ -34,7 +34,7 @@ public class CheckoutSolution {
         for (char c : items.toCharArray()) {
             String sku = String.valueOf(c);
 
-            if (!isValidSku(sku)) {
+            if (!VALID_SKUS.contains(sku)) {
                 return -1;
             }
 
@@ -51,9 +51,6 @@ public class CheckoutSolution {
         }
         return total;
     }
-
-    private boolean isValidSku(String sku) {
-        return List.of("A", "B", "C", "D", "E", "F").contains(sku);
-    }
 }
+
 
