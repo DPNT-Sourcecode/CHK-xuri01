@@ -10,19 +10,6 @@ public class CheckoutSolution {
     private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F", "G", "H",
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
-    private final List<PricingRule> pricingRules = List.of(
-            new GroupDiscountPricingRule(
-                    List.of("S", "T", "X", "Y", "Z"),
-                    Map.of("S", 20,
-                            "T", 20,
-                            "X", 90,
-                            "Y", 10,
-                            "Z", 50),
-                    3,
-                    45
-            )
-    );
-
     private final List<Promotion> promotions = List.of(
             new BuyXGetYFreePromotion("E", 2, "B"),
             new BuyXGetYFreePromotion("N", 3, "M"),
@@ -89,4 +76,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
