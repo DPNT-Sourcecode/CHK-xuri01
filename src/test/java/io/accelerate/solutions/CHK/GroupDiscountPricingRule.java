@@ -30,8 +30,13 @@ public class GroupDiscountPricingRule implements PricingRule {
             }
         }
         allItems.sort(Comparator.reverseOrder());
+        int total = 0;
+        
+
         return 0;
     }
+
 }
+
 
 
