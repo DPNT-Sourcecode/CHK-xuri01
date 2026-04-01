@@ -30,4 +30,12 @@ class MultiBuyPricingRuleTest {
 
     }
 
+    @Test
+    void shouldHandleSingleOfferForB(){
+        var rule = new MultiBuyPricingRule("B", 30, Map.of(2, 45));
+        var items = new HashMap<String, Integer>();
+        items.put("B", 3);
+        assertEquals(75, );
+    }
+
 }

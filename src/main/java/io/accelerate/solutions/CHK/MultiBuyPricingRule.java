@@ -34,7 +34,3 @@ public class MultiBuyPricingRule implements PricingRule {
         return total;
     }
 }
-
-
-
-
