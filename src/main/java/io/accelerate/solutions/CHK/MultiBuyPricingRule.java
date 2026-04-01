@@ -24,7 +24,9 @@ public class MultiBuyPricingRule implements PricingRule{
 
         for(int offerQty : sortedOffers){
             int offerPrice = offers.get(offerQty);
-            
+            total += (count / offerQty) * offerPrice;
+            count += count * unitPrice;
+            return total;
         }
 
         return 0;
