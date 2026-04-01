@@ -1,5 +1,6 @@
 package io.accelerate.solutions.CHK;
 
+import java.util.List;
 import java.util.Map;
 
 public class MultiBuyPricingRule implements PricingRule {
@@ -7,7 +8,7 @@ public class MultiBuyPricingRule implements PricingRule {
     private final String sku;
     private final int unitPrice;
     private final Map<Integer, Integer> offers;
-    private final List<Map.Entry>
+    private final List<Map.Entry<Integer, Integer>> sortedOffers;
 
     public MultiBuyPricingRule(String sku, int unitPrice, Map<Integer, Integer> offers) {
         this.sku = sku;
@@ -15,6 +16,7 @@ public class MultiBuyPricingRule implements PricingRule {
         this.offers = offers;
 
 
+        this.sortedOffers = offers.entrySet().stream().sorted((a,b) -> b.getKey() - a.getKey())
     }
 
     @Override
@@ -36,4 +38,5 @@ public class MultiBuyPricingRule implements PricingRule {
         return total;
     }
 }
+
 
