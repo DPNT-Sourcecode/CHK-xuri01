@@ -6,7 +6,10 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    private final List<Promotion> promotions = List.of(new BuyXGetYFreePromotion());
+    private final List<Promotion> promotions = List.of(
+            new BuyXGetYFreePromotion("E", 2, "B"),
+            new BuyXGetYFreePromotion("N", 3, "M"),
+            new BuyXGetYFreePromotion("R", 3, "Q"));
 
     private final List<PricingRule> pricingRules = List.of(
             new APricingRule(),
@@ -49,3 +52,4 @@ public class CheckoutSolution {
         return List.of("A", "B", "C", "D", "E","F").contains(sku);
     }
 }
+
