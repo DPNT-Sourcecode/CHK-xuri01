@@ -11,7 +11,13 @@ public class CheckoutSolution {
             new BuyXGetYFreePromotion("N", 3, "M"),
             new BuyXGetYFreePromotion("R", 3, "Q"));
 
+
     private final List<PricingRule> pricingRules = List.of(
+
+            new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),
+            new MultiBuyPricingRule("B", 30, Map.of(5, 200, 3, 130)),
+
+
             new APricingRule(),
             new BPricingRule(),
             new FPricingRule(),
