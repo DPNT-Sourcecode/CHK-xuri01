@@ -56,7 +56,7 @@ public class CheckoutSolution {
 
         var itemCounts = new HashMap<String, Integer>();
 
-        for (char c : items.toCharArray()) {
+        /*for (char c : items.toCharArray()) {
             var sku = String.valueOf(c);
 
             if (!VALID_SKUS.contains(sku)) {
@@ -64,7 +64,7 @@ public class CheckoutSolution {
             }
 
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
-        }
+        }*/
 
         for (Promotion promotion : promotions) {
             promotion.apply(itemCounts);
@@ -77,6 +77,18 @@ public class CheckoutSolution {
     }
 
     private Map<String, Integer> buildItemCounts(String items) {
-        var itemCounts = new <String, Integer> HashMap();
+        var itemCounts = new HashMap<String, Integer>();
+
+        for (char c : items.toCharArray()) {
+            var sku = String.valueOf(c);
+
+            if (!VALID_SKUS.contains(sku)) {
+                return null;
+            }
+
+            itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
+        }
+
+        return itemCounts;
     }
 }
