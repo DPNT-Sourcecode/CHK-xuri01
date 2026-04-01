@@ -35,14 +35,26 @@ class BuyXGetYFreePromotionTest {
 
     @Test
     void shouldApplyPromotion_R_Gives_Q(){
-        var promotion = new BuyXGetYFreePromotion("N", 3, "M");
+        var promotion = new BuyXGetYFreePromotion("R", 3, "Q");
 
         Map<String, Integer> items = new HashMap<>();
         items.put("R", 3);
         items.put("Q", 2);
 
         promotion.apply(items);
-        assertEquals(1, items.get("M"));
+        assertEquals(1, items.get("Q"));
+    }
+
+    @Test
+    void shouldNotGoNegative(){
+        var promotion = new BuyXGetYFreePromotion("R", 3, "Q");
+
+        Map<String, Integer> items = new HashMap<>();
+        items.put("R", 6);
+        items.put("Q", 1);
+
+        promotion.apply(items);
+        assertEquals(0, items.get("Q"));
     }
 
 }
