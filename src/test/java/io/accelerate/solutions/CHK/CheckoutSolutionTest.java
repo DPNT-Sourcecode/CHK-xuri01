@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CheckoutSolutionTest {
 
@@ -91,12 +92,16 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(items));
     }
 
+    @Test
     void shouldPriceAllIndividualSkus(){
         String allSkus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for(char c : allSkus.toCharArray()){
             String sku = String.valueOf(c);
-            int result = checkoutSolution.checkout()
+            int result = checkoutSolution.checkout(sku);
+
+            assertTrue(result > 0,
+                    "SKU " +sku + " returned  "+result + " (should be priced) " );
         }
     }
 }
