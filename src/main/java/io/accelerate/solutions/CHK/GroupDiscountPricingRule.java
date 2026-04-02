@@ -22,7 +22,7 @@ public class GroupDiscountPricingRule implements PricingRule {
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
         List<Integer> prices = extractPrices(itemCounts);
-        prices.sort(Comparator.naturalOrder());
+        prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
         consumeItems(itemCounts);
         return total;
@@ -73,4 +73,5 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
