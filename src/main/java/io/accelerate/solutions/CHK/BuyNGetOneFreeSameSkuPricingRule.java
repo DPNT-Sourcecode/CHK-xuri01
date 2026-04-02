@@ -1,6 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class BuyNGetOneFreeSameSkuPricingRule implements PricingRule {
     private final String sku;
@@ -8,7 +9,7 @@ public class BuyNGetOneFreeSameSkuPricingRule implements PricingRule {
     private final int groupSize;
 
     public BuyNGetOneFreeSameSkuPricingRule(String sku, int unitPrice, int groupSize) {
-        this.sku = sku;
+        this.sku = Objects.requireNonNull(sku, );
         this.unitPrice = unitPrice;
         this.groupSize = groupSize;
     }
@@ -23,4 +24,5 @@ public class BuyNGetOneFreeSameSkuPricingRule implements PricingRule {
         return payableItems * unitPrice;
     }
 }
+
 
