@@ -20,15 +20,25 @@ public class MultiBuyPricingRule implements PricingRule {
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
         int count = itemCounts.getOrDefault(sku, 0);
-        int total = findBestPrice(count);
+        int total = 0;
 
         for (Map.Entry<Integer, Integer> offer : sortedOffers) {
             int quantity = offer.getKey();
             int price = offer.getValue();
             int times = count / quantity;
+
+            if(times > 0){
+                total += times * price;
+                count %
+            }
             total += times * price;
             count %= quantity;
         }
+
+        if(total == 0){
+            total += count * unitPrice;
+        }
+
         total += count * unitPrice;
         itemCounts.put(sku, 0);
         return total;
@@ -42,7 +52,3 @@ public class MultiBuyPricingRule implements PricingRule {
         for (Map.Entry)
     }
 }
-
-
-
-
