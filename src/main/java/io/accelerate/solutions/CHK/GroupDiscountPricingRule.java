@@ -28,8 +28,22 @@ public class GroupDiscountPricingRule implements PricingRule {
         return total;
     }
 
-    private List<Integer> extractPrices(Map<String, Integer> itemCounts) {
-        var prices = new ArrayList<Integer>();
+    private List<String> extractItems(Map<String, Integer> itemCounts) {
+
+        var items = new ArrayList<String>();
+
+        for (String sku : skus) {
+            int count = itemCounts.getOrDefault(sku, 0);
+
+            for (int i = 0; i < count; i++) {
+                items.add(sku);
+            }
+
+            return items;
+        }
+
+
+        /*var prices = new ArrayList<Integer>();
         for (String sku : skus) {
             int count = itemCounts.getOrDefault(sku, 0);
 
@@ -48,6 +62,8 @@ public class GroupDiscountPricingRule implements PricingRule {
 
         }
         return prices;
+
+         */
     }
 
     private int calculateGroupedTotal(List<Integer> prices) {
@@ -73,5 +89,3 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
-
-
