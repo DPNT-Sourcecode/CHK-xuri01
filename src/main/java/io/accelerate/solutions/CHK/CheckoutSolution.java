@@ -122,7 +122,8 @@ public class CheckoutSolution {
         //2 Free items promotions
         // E -> B
         int freeB = counts.getOrDefault('E', 0) / 2;
-        counts.put('B')
+        counts.put('B', Math.max(0, counts.getOrDefault('B', 0) - freeB)) ;
+        
     }
 
 }
