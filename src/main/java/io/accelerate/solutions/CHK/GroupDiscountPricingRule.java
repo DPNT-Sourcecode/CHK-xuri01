@@ -29,8 +29,10 @@ public class GroupDiscountPricingRule implements PricingRule {
         int groups = items.size() / groupSize;
         int itemsUsed = groups * groupSize;
 
+      //apply group discount
         total += groups * groupPrice;
 
+        // Charge remaining items normally
         for (int i = 0; i < itemsUsed; i++) {
             String sku = items.get(i);
             itemCounts.put(sku, itemCounts.get(sku) - 1);
@@ -55,3 +57,4 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
