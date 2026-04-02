@@ -43,12 +43,6 @@ public class MultiBuyPricingRule implements PricingRule {
         return total;
     }
 
-    private int findBestPrice(int count) {
-        if (count == 0) return 0;
-
-        int min = count * unitPrice;
-
-        for (Map.Entry)
-    }
 }
+
 
