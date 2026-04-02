@@ -34,11 +34,19 @@ public class MultiBuyPricingRule implements PricingRule {
         total += count * unitPrice;
         */
 
-        for(Map.Entry<Integer, Integer> offer : sortedOffers){
-            int quantity
+        for (Map.Entry<Integer, Integer> offer : sortedOffers) {
+            int quantity = offer.getKey();
+            int price = offer.getValue();
+
+            int times = count / quantity;
+            total += times * price;
+            count %= quantity;
         }
 
+        total += count * unitPrice;
+        itemCounts.put(sku, 0);
         return total;
     }
 }
+
 
