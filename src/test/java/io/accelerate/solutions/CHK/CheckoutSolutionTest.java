@@ -127,4 +127,10 @@ class CheckoutSolutionTest {
     void shouldHandleMFreeQ(){
         assertEquals(120, checkoutSolution.checkout("NNNM"));
     }
+
+    @Test
+    void shouldPreferBetterOfferForA(){
+        assertEquals(120, checkoutSolution.checkout("NNNM"));
+        assertEquals(250, checkoutSolution.checkout("AAAA"));
+    }
 }
