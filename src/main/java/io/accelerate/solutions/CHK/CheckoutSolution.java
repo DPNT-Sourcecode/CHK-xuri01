@@ -1,5 +1,6 @@
 package io.accelerate.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -133,7 +134,11 @@ public class CheckoutSolution {
         counts.put('B', Math.max(0, counts.getOrDefault('Q', 0) - freeQ)) ;
 
         //3 - Group discount (S, T, X, Y, Z)
-        Map<Character, Integer> groupPrices = Map.of('S', 20, 
+        Map<Character, Integer> groupPrices = Map.of('S', 20, 'T', 20, 'X', 17, 'Y', 20, 'Z', 21);
+
+        List<Integer> groupItems = new ArrayList<>();
+
+        for(char c: groupItems.k)
 
     }
 
