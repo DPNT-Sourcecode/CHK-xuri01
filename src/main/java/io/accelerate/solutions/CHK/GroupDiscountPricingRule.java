@@ -34,7 +34,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
         for (int i = 0; i < itemsUsed; i++) {
             String sku = items.get(i);
-            itemCounts.put(sku, itemCounts.getOrDefault(sku)) - 1)
+            itemCounts.put(sku, itemCounts.get(sku) - 1);
         }
 
         prices.sort(Comparator.reverseOrder());
@@ -104,6 +104,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
 
 
