@@ -22,5 +22,3 @@ public class DefaultPricingRule implements PricingRule {
         return total;
     }
 }
-
-

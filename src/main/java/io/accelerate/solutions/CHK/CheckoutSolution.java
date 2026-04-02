@@ -17,16 +17,6 @@ public class CheckoutSolution {
 
 
     private final List<PricingRule> pricingRules = List.of(
-
-            new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),
-            new MultiBuyPricingRule("B", 30, Map.of(2, 45)),
-            new MultiBuyPricingRule("H", 10, Map.of(10, 80, 5, 45)),
-            new MultiBuyPricingRule("K", 80, Map.of(2, 150)),
-            new MultiBuyPricingRule("P", 50, Map.of(5, 200)),
-            new MultiBuyPricingRule("Q", 30, Map.of(3, 80)),
-            new MultiBuyPricingRule("V", 50, Map.of(3, 130, 2, 90)),
-            new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
-            new BuyNGetOneFreeSameSkuPricingRule("U", 40, 4),
             new GroupDiscountPricingRule(
                     List.of("S", "T", "X", "Y", "Z"),
                     Map.of(
@@ -39,6 +29,15 @@ public class CheckoutSolution {
                     45
             ),
 
+            new MultiBuyPricingRule("A", 50, Map.of(5, 200, 3, 130)),
+            new MultiBuyPricingRule("B", 30, Map.of(2, 45)),
+            new MultiBuyPricingRule("H", 10, Map.of(10, 80, 5, 45)),
+            new MultiBuyPricingRule("K", 80, Map.of(2, 150)),
+            new MultiBuyPricingRule("P", 50, Map.of(5, 200)),
+            new MultiBuyPricingRule("Q", 30, Map.of(3, 80)),
+            new MultiBuyPricingRule("V", 50, Map.of(3, 130, 2, 90)),
+            new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
+            new BuyNGetOneFreeSameSkuPricingRule("U", 40, 4),
             new DefaultPricingRule("C", 20),
             new DefaultPricingRule("D", 15),
             new DefaultPricingRule("E", 40),
