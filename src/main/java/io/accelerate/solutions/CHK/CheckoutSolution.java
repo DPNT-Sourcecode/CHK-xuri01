@@ -62,16 +62,12 @@ public class CheckoutSolution {
     public Integer checkout(String items) {
         if (isEmpty(items)) return 0;
 
-        try {
-            var basket = buildItemCounts(items);
-            if (basket == null) {
-                return -1;
-            }
-            applyPromotions(basket);
-            return calculateTotal(basket);
-        } catch (IllegalArgumentException e) {
-            return -1;
-        }
+        var basket = buildItemCounts(items);
+        if (basket == null) return -1;
+
+        applyPromotions(basket);
+        return calculateTotal(basket);
+
     }
 
     private Map<String, Integer> buildItemCounts(String items) {
@@ -111,3 +107,4 @@ public class CheckoutSolution {
 
 
 }
+
