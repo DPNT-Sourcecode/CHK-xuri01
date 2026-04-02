@@ -37,9 +37,9 @@ public class GroupDiscountPricingRule implements PricingRule {
             itemCounts.put(sku, itemCounts.get(sku) - 1);
         }
 
-        prices.sort(Comparator.reverseOrder());
+        /*prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
-        consumeItems(itemCounts);
+        consumeItems(itemCounts);*/
         return total;
     }
 
@@ -79,7 +79,7 @@ public class GroupDiscountPricingRule implements PricingRule {
         return prices;
 
          */
-    }
+
 
     private int calculateGroupedTotal(List<Integer> prices) {
 
@@ -104,6 +104,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
 
 
