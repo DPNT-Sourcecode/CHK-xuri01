@@ -18,5 +18,3 @@ public class DefaultPricingRule implements PricingRule {
         return count * price;
     }
 }
-
-

@@ -25,4 +25,3 @@ public class BuyNGetOneFreeSameSkuPricingRule implements PricingRule {
         return payableItems * unitPrice;
     }
 }
-
