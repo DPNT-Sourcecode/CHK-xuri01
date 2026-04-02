@@ -138,8 +138,9 @@ public class CheckoutSolution {
 
         List<Integer> groupItems = new ArrayList<>();
 
-        for(char c: groupItems.k)
+        for(char c: groupItems.)
 
     }
 
 }
+
