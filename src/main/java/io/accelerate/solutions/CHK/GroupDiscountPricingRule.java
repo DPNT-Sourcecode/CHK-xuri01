@@ -1,6 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,44 +21,55 @@ public class GroupDiscountPricingRule implements PricingRule {
 
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
-        List<String> items = extractItems(itemCounts);
+        List<Integer> prices = extractPrices(itemCounts);
+        prices.sort(Comparator.reverseOrder());
+        int total = calculateGroupedTotal(prices);
+        consumeItems(itemCounts);
+        return total;
+    }
 
-        items.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
+    private List<Integer> extractPrices(Map<String, Integer> itemCounts) {
+        var prices = new ArrayList<Integer>();
+        for (String sku : skus) {
+            int count = itemCounts.getOrDefault(sku, 0);
+
+            if (count == 0) {
+                continue;
+            }
+            Integer price = unitPrices.get(sku);
+
+            if (price == null) {
+                throw new NullPointerException("Missing unit price for SKU: " + sku);
+            }
+
+            for (int i = 0; i < count; i++) {
+                prices.add(price);
+            }
+
+        }
+        return prices;
+    }
+
+    private int calculateGroupedTotal(List<Integer> prices) {
 
         int total = 0;
+        int groups = prices.size() / groupSize;
+        int remainingStart = groups * groupSize;
 
-        int groups = items.size() / groupSize;
-        int itemsUsed = groups * groupSize;
-
-      //apply group discount
         total += groups * groupPrice;
 
-        // Charge remaining items normally
-        for(int i = itemsUsed; i < items.size(); i++){
-            total += unitPrices.get(items.get(i));
-        }
-
-        //Consume all items
-        for(String sku : skus){
-            itemCounts.put(sku, 0);
+        for (int i = remainingStart; i < prices.size(); i++) {
+            total += prices.get(i);
         }
 
         return total;
     }
 
-    private List<String> extractItems(Map<String, Integer> itemCounts) {
-
-        var items = new ArrayList<String>();
-
+    private void consumeItems(Map<String, Integer> itemCounts) {
         for (String sku : skus) {
-            int count = itemCounts.getOrDefault(sku, 0);
-
-            for (int i = 0; i < count; i++) {
-                items.add(sku);
-            }
+            itemCounts.put(sku, 0);
         }
-
-        return items;
     }
+
 
 }

@@ -22,25 +22,17 @@ public class MultiBuyPricingRule implements PricingRule {
         int count = itemCounts.getOrDefault(sku, 0);
         int total = 0;
 
-        for (Map.Entry<Integer, Integer> offer : sortedOffers) {
-            int quantity = offer.getKey();
-            int price = offer.getValue();
+        var sortedQuantities = offers.keySet().stream().sorted((a, b) -> b - a).toList();
+
+        for (int quantity : sortedQuantities) {
+            int offerPrice = offers.get(quantity);
             int times = count / quantity;
-
-            if (times > 0) {
-                total += times * price;
-                count %= quantity;
-            }
-            total += times * price;
+            total += times * offerPrice;
             count %= quantity;
-
-            //only charge leftovers if no offer applied
-            if (total == 0) {
-                total += count * unitPrice;
-            }
         }
-        itemCounts.put(sku, 0);
+
+        total += count * unitPrice;
+
         return total;
     }
-
 }
