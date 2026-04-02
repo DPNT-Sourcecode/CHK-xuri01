@@ -35,18 +35,17 @@ public class MultiBuyPricingRule implements PricingRule {
 
          */
 
-        for (var entry : sortedOffers) {
-            int quantity = entry.getKey();
-            int offerPrice = entry.getValue();
-            int times = count / quantity;
-            total += times * offerPrice;
-            count %= quantity;
-        }
-        total += count * unitPrice;
+        for(Map.Entry<Integer, Integer> offer : sortedOffers){
+            int quantity = offer.getKey();
+            int price = offer.getValue();
 
-        itemCounts.put(sku, 0);
+            int times = count / quantity;
+            total += times * price;
+            count = 
+        }
         return total;
     }
 }
+
 
 
