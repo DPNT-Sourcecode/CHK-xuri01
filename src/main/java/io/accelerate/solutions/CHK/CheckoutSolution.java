@@ -126,7 +126,15 @@ public class CheckoutSolution {
 
         //N -> M
         int freeM = counts.getOrDefault('N', 0) / 3;
-        counts.put('B', Math.max(0, counts.getOrDefault('M', 0) - freeB)) ;
+        counts.put('B', Math.max(0, counts.getOrDefault('M', 0) - freeM)) ;
+
+        //R -> Q
+        int freeQ = counts.getOrDefault("R", 0) / 3;
+        counts.put('B', Math.max(0, counts.getOrDefault('Q', 0) - freeQ)) ;
+
+        //3 - Group discount (S, T, X, Y, Z)
+        Map<Character, Integer> groupPrices = Map.of('S', 20, 
+
     }
 
 }
