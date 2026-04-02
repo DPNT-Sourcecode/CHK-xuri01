@@ -112,11 +112,17 @@ public class CheckoutSolution {
         if(skus == null || skus.isEmpty()) return 0;
         Map<Character, Integer> counts = new HashMap<>();
 
+        //1. Validate + count
         for(char c : skus.toCharArray()){
             if((c < 'A') || ( c > 'Z')) return -1;
-            counts.put()
-
+            counts.put(c, counts.getOrDefault(c, 0) + 1);
         }
+        int total = 0;
+
+        //2 Free items promotions
+        // E -> B
+        int freeB = counts.getOrDefault('E', 0) / 2;
+        counts.put('B')
     }
 
 }
