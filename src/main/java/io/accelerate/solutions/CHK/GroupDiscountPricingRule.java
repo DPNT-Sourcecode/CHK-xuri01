@@ -38,6 +38,8 @@ public class GroupDiscountPricingRule implements PricingRule {
             itemCounts.put(sku, itemCounts.get(sku) - 1);
         }
 
+        for(int i = )
+
         return total;
     }
 
@@ -57,4 +59,5 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
