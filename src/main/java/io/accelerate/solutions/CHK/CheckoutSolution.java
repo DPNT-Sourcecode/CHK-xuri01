@@ -5,10 +5,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CheckoutSolution {
 
-    /*private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F", "G", "H",
+    private static final Set<String> VALID_SKUS = Set.of("A", "B", "C", "D", "E", "F", "G", "H",
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
     private final List<Promotion> promotions = List.of(
@@ -107,9 +108,9 @@ public class CheckoutSolution {
     private boolean isEmpty(String items) {
         return items == null || items.isEmpty();
     }
-     */
 
-    public Integer checkout(String skus) {
+
+    /*public Integer checkout(String skus) {
         if (skus == null || skus.isEmpty()) return 0;
         Map<Character, Integer> counts = new HashMap<>();
 
@@ -166,6 +167,8 @@ public class CheckoutSolution {
         }
         return total;
     }
+
+     */
 
 }
 
