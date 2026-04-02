@@ -105,5 +105,16 @@ class CheckoutSolutionTest {
         }
     }
 
-    void shouldApplyGroup
+    @Test
+    void shouldApplyGroupDiscount(){
+        assertEquals(45, checkoutSolution.checkout("STX"));
+        assertEquals(45, checkoutSolution.checkout("XYZ"));
+        assertEquals(90, checkoutSolution.checkout("STXYZ"));
+    }
+
+    @Test
+    void shouldPickMostExpensiveItemsFroGroup(){
+        assertEquals(45, checkoutSolution.checkout("ZYS"));
+        assertEquals();
+    }
 }
