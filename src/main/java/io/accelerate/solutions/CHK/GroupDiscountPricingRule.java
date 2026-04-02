@@ -81,21 +81,6 @@ public class GroupDiscountPricingRule implements PricingRule {
          */
 
 
-    private int calculateGroupedTotal(List<Integer> prices) {
-
-        int total = 0;
-        int groups = prices.size() / groupSize;
-        int remainingStart = groups * groupSize;
-
-        total += groups * groupPrice;
-
-        for (int i = remainingStart; i < prices.size(); i++) {
-            total += prices.get(i);
-        }
-
-        return total;
-    }
-
     private void consumeItems(Map<String, Integer> itemCounts) {
         for (String sku : skus) {
             itemCounts.put(sku, 0);
@@ -104,3 +89,4 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
