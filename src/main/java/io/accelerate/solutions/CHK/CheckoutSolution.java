@@ -1,10 +1,10 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class CheckoutSolution {
 
@@ -110,12 +110,12 @@ public class CheckoutSolution {
      */
 
     public Integer checkout(String skus) {
-        if(skus == null || skus.isEmpty()) return 0;
+        if (skus == null || skus.isEmpty()) return 0;
         Map<Character, Integer> counts = new HashMap<>();
 
         //1. Validate + count
-        for(char c : skus.toCharArray()){
-            if((c < 'A') || ( c > 'Z')) return -1;
+        for (char c : skus.toCharArray()) {
+            if ((c < 'A') || (c > 'Z')) return -1;
             counts.put(c, counts.getOrDefault(c, 0) + 1);
         }
         int total = 0;
@@ -123,23 +123,48 @@ public class CheckoutSolution {
         //2 Free items promotions
         // E -> B
         int freeB = counts.getOrDefault('E', 0) / 2;
-        counts.put('B', Math.max(0, counts.getOrDefault('B', 0) - freeB)) ;
+        counts.put('B', Math.max(0, counts.getOrDefault('B', 0) - freeB));
 
         //N -> M
         int freeM = counts.getOrDefault('N', 0) / 3;
-        counts.put('B', Math.max(0, counts.getOrDefault('M', 0) - freeM)) ;
+        counts.put('B', Math.max(0, counts.getOrDefault('M', 0) - freeM));
 
         //R -> Q
         int freeQ = counts.getOrDefault("R", 0) / 3;
-        counts.put('B', Math.max(0, counts.getOrDefault('Q', 0) - freeQ)) ;
+        counts.put('B', Math.max(0, counts.getOrDefault('Q', 0) - freeQ));
 
         //3 - Group discount (S, T, X, Y, Z)
         Map<Character, Integer> groupPrices = Map.of('S', 20, 'T', 20, 'X', 17, 'Y', 20, 'Z', 21);
 
         List<Integer> groupItems = new ArrayList<>();
 
-        for(char c: groupItems.)
+        for (char c : groupPrices.keySet()) {
+            int count = counts.getOrDefault(c, 0);
+            for (int i = 0; i < count; i++) {
+                groupItems.add(groupPrices.get(c));
+            }
+            counts.put(c, 0); // consume
+        }
 
+        for (char c : groupPrices.keySet()) {
+            int count = counts.getOrDefault(c, 0);
+            for (int i = 0; i < count; i++) {
+                groupItems.add(groupPrices.get(c));
+            }
+            counts.put(c, 0); // consume
+        }
+
+        groupItems.sort(Collections.reverseOrder());
+
+        while (groupItems.size() >= 3) {
+            total += 45;
+            groupItems.subList(0, 3).clear();
+        }
+
+        for (int price : groupItems) {
+            total += price;
+        }
+        return total;
     }
 
 }
