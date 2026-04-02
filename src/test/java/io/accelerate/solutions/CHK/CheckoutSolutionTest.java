@@ -92,6 +92,11 @@ class CheckoutSolutionTest {
     }
 
     void shouldPriceAllIndividualSkus(){
-        
+        String allSkus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for(char c : allSkus.toCharArray()){
+            String sku = String.valueOf(c);
+            int result = checkoutSolution.checkout()
+        }
     }
 }
