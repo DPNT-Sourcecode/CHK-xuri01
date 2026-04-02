@@ -35,17 +35,18 @@ public class MultiBuyPricingRule implements PricingRule {
 
          */
 
-        for(var entry : sortedOffers){
+        for (var entry : sortedOffers) {
             int quantity = entry.getKey();
             int offerPrice = entry.getValue();
-
-            int times = count /quantity;
-
+            int times = count / quantity;
             total += times * offerPrice;
             count %= quantity;
         }
+        total += count * unitPrice;
 
+        itemCounts.put(sku, 0);
         return total;
     }
 }
+
 

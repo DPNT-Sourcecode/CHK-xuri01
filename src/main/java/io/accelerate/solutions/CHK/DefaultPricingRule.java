@@ -13,6 +13,8 @@ public class DefaultPricingRule implements PricingRule{
 
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
+
         return itemCounts.getOrDefault(sku, 0) * price;
     }
 }
+
