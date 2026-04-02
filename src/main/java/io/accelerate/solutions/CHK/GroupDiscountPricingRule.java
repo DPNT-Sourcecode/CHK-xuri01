@@ -27,7 +27,10 @@ public class GroupDiscountPricingRule implements PricingRule {
 
         int total = 0;
 
-        int groups = item
+        int groups = items.size() / groupSize;
+        int itemsUsed = groups * groupSize;
+
+        total += groups * 
 
         prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
@@ -96,5 +99,6 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
 
