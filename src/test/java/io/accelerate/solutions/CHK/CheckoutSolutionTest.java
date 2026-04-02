@@ -104,4 +104,6 @@ class CheckoutSolutionTest {
                     "SKU " +sku + " returned  "+result + " (should be priced) " );
         }
     }
+
+    void shouldApplyGroup
 }
