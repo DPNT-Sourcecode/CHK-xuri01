@@ -115,6 +115,16 @@ class CheckoutSolutionTest {
     @Test
     void shouldPickMostExpensiveItemsFroGroup(){
         assertEquals(45, checkoutSolution.checkout("ZYS"));
-        assertEquals();
+        assertEquals(45, checkoutSolution.checkout("ZTY"));
+    }
+
+    @Test
+    void shouldHandleRFreeQ(){
+        assertEquals(150, checkoutSolution.checkout("RRRQ"));
+    }
+
+    @Test
+    void shouldHandleMFreeQ(){
+        assertEquals(120, checkoutSolution.checkout("NNNM"));
     }
 }
