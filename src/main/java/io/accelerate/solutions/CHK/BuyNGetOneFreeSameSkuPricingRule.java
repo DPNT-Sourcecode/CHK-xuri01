@@ -16,12 +16,11 @@ public class BuyNGetOneFreeSameSkuPricingRule implements PricingRule {
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
 
-        int groupTotal = groupSize;
         int count = itemCounts.getOrDefault(sku, 0);
-        int freeItems = count / groupTotal;
-        int payableItems = count - freeItems;
+        int freeItems = count / groupSize;
         itemCounts.put(sku, 0);
 
         return payableItems * unitPrice;
     }
 }
+
