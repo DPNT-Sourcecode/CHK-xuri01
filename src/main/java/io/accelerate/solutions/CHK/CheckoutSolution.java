@@ -55,7 +55,7 @@ public class CheckoutSolution {
             new DefaultPricingRule("Y", 10),
             new DefaultPricingRule("Z", 50)
 
-            );
+    );
 
     public Integer checkout(String items) {
         if (isEmpty(items)) return 0;
@@ -67,7 +67,7 @@ public class CheckoutSolution {
             }
             applyPromotions(basket);
             return calculateTotal(basket);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             return -1;
         }
     }
