@@ -62,6 +62,9 @@ public class GroupDiscountPricingRule implements PricingRule {
             total += prices.get(i);
         }
 
+
+
+
         return total;
     }
 
