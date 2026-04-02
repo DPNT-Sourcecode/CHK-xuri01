@@ -109,7 +109,14 @@ public class CheckoutSolution {
      */
 
     public Integer checkout(String skus) {
+        if(skus == null || skus.isEmpty()) return 0;
+        Map<Character, Integer> counts = new HashMap<>();
 
+        for(char c : skus.toCharArray()){
+            if((c < 'A') || ( c > 'Z')) return -1;
+            counts.put()
+
+        }
     }
 
 }
