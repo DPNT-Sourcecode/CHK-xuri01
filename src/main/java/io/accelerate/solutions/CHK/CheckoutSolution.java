@@ -123,7 +123,10 @@ public class CheckoutSolution {
         // E -> B
         int freeB = counts.getOrDefault('E', 0) / 2;
         counts.put('B', Math.max(0, counts.getOrDefault('B', 0) - freeB)) ;
-        
+
+        //N -> M
+        int freeM = counts.getOrDefault('N', 0) / 3;
+        counts.put('B', Math.max(0, counts.getOrDefault('M', 0) - freeB)) ;
     }
 
 }
