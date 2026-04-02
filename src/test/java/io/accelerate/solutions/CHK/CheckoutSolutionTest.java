@@ -131,6 +131,11 @@ class CheckoutSolutionTest {
     @Test
     void shouldPreferBetterOfferForA(){
         assertEquals(120, checkoutSolution.checkout("NNNM"));
-        assertEquals(250, checkoutSolution.checkout("AAAA"));
+        assertEquals(250, checkoutSolution.checkout("AAAAAAA"));
+    }
+
+    @Test
+    void shouldHandleFullAlphabet(){
+        assertEquals(965, checkoutSolution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
     }
 }
