@@ -27,19 +27,18 @@ public class MultiBuyPricingRule implements PricingRule {
             int price = offer.getValue();
             int times = count / quantity;
 
-            if(times > 0){
+            if (times > 0) {
                 total += times * price;
-                count %
+                count %= quantity;
             }
             total += times * price;
             count %= quantity;
-        }
 
-        if(total == 0){
-            total += count * unitPrice;
+            //only charge leftovers if no offer applied
+            if (total == 0) {
+                total += count * unitPrice;
+            }
         }
-
-        total += count * unitPrice;
         itemCounts.put(sku, 0);
         return total;
     }
@@ -52,3 +51,4 @@ public class MultiBuyPricingRule implements PricingRule {
         for (Map.Entry)
     }
 }
+
