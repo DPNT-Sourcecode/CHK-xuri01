@@ -90,4 +90,8 @@ class CheckoutSolutionTest {
     public void shouldReturnMinusOneForInvalidInputs(String items) {
         assertEquals(-1, checkoutSolution.checkout(items));
     }
+
+    void shouldPriceAllIndividualSkus(){
+        
+    }
 }
