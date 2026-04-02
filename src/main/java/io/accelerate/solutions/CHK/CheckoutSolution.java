@@ -22,7 +22,7 @@ public class CheckoutSolution {
                     Map.of(
                             "S", 30,
                             "T", 20,
-                            "X", 90,
+                            "X", 17,
                             "Y", 10,
                             "Z", 50),
                     3,
