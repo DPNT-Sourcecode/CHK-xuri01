@@ -23,10 +23,6 @@ public class BuyNGetOneFreeSameSkuPricingRule implements PricingRule {
         itemCounts.put(sku, 0);
 
         return payableItems * unitPrice;
-
-
-        /*int freeItems = count / groupSize;
-        int payableItems = count - freeItems;
-        return payableItems * unitPrice;*/
     }
 }
+
