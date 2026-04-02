@@ -55,9 +55,9 @@ public class CheckoutSolution {
             new DefaultPricingRule("W", 20),
             new DefaultPricingRule("S", 30),
             new DefaultPricingRule("T", 20),
-            new DefaultPricingRule("X", 17),
-            new DefaultPricingRule("Y", 20),
-            new DefaultPricingRule("Z", 21)
+            new DefaultPricingRule("X", 90),
+            new DefaultPricingRule("Y", 10),
+            new DefaultPricingRule("Z", 50)
 
     );
 
@@ -109,3 +109,4 @@ public class CheckoutSolution {
 
 
 }
+
