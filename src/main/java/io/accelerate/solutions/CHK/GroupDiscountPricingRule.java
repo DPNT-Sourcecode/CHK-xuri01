@@ -33,12 +33,14 @@ public class GroupDiscountPricingRule implements PricingRule {
         total += groups * groupPrice;
 
         // Charge remaining items normally
-        for (int i = 0; i < itemsUsed; i++) {
-            String sku = items.get(i);
-            itemCounts.put(sku, itemCounts.get(sku) - 1);
+        for(int i = itemsUsed; i < items.size(); i++){
+            total += unitPrices.get(items.get(i));
         }
 
-        for(int i = )
+        //Consume all items
+        for(String sku : skus){
+            itemCounts.put(sku, 0);
+        }
 
         return total;
     }
@@ -59,5 +61,6 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
 
