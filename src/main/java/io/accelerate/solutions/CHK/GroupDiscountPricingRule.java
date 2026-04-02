@@ -23,14 +23,19 @@ public class GroupDiscountPricingRule implements PricingRule {
     public int calculate(Map<String, Integer> itemCounts) {
         List<String> items = extractItems(itemCounts);
 
-        items.sort((a,b) -> unitPrices.get(b) - unitPrices.get(a));
+        items.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
 
         int total = 0;
 
         int groups = items.size() / groupSize;
         int itemsUsed = groups * groupSize;
 
-        total += groups * 
+        total += groups * groupSize;
+
+        for (int i = 0; i < itemsUsed; i++) {
+            String sku = items.get(i);
+            itemCounts.put(sku, itemCounts.getOrDefault(sku)) - 1)
+        }
 
         prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
@@ -99,6 +104,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
 
 
