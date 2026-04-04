@@ -35,12 +35,13 @@ public class GroupDiscountPricingRule implements PricingRule {
             }
         }
 
+        //
         expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
 
         int total = 0;
         int index = 0;
 
-        
+
 
         List<Integer> prices = extractPrices(itemCounts);
         prices.sort(Comparator.reverseOrder());
@@ -95,6 +96,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
 
 
