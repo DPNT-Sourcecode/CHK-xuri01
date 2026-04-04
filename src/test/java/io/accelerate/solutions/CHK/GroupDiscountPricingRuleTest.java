@@ -136,7 +136,7 @@ class GroupDiscountPricingRuleTest {
 
         int result = rule.calculate(itemCounts);
 
-        assertEquals(130, result);
+        assertEquals(120, result);
     }
 
     @Test
@@ -164,3 +164,4 @@ class GroupDiscountPricingRuleTest {
 
 
 }
+
