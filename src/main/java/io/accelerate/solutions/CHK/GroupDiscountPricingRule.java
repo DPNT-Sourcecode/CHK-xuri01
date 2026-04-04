@@ -26,6 +26,10 @@ public class GroupDiscountPricingRule implements PricingRule {
             throw new NullPointerException("itemCounts cannot be null");
         }
 
+        //Expand items into a list of SKUs
+        List<String> expanded = new ArrayList<>();
+        for(String sku)
+
         List<Integer> prices = extractPrices(itemCounts);
         prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
@@ -79,4 +83,5 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
