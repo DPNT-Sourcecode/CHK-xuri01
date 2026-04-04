@@ -1,6 +1,5 @@
 package io.accelerate.solutions.CHK;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,38 +19,35 @@ public class GroupDiscountPricingRule implements PricingRule {
 
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
-
         if (itemCounts == null) {
             throw new NullPointerException("itemCounts cannot be null");
         }
 
-        //Expand items into a list of SKUs
-        List<String> expanded = new ArrayList<>();
-        for (String sku : skus) {
-            int count = itemCounts.getOrDefault(sku, 0);
-            for (int i = 0; i < count; i++) {
-                expanded.add(sku);
-            }
-        }
-
-        //Sort by price desc (most expensive first)
-        expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
-
         int total = 0;
-        int index = 0;
+        while (true) {
+            List<String> available = skus.stream()
+                    .filter(sku -> itemCounts.getOrDefault(sku, 0) > 0)
+                    .sorted((a, b) -> unitPrices.get(b) - unitPrices.get(a))
+                    .toList();
 
-        while (index + groupSize <= expanded.size()) {
+            if (available.size() < groupSize) {
+                break;
+            }
+
             for (int i = 0; i < groupSize; i++) {
-                String sku = expanded.get(index + i);
+                String sku = available.get(i);
                 itemCounts.put(sku, itemCounts.get(sku) - 1);
             }
             total += groupPrice;
-            index += groupSize;
-
         }
 
+        for (String sku : skus) {
+            int count = itemCounts.getOrDefault(sku, 0);
+            total += count * unitPrices.get(sku);
+            itemCounts.put(sku, 0);
+        }
         return total;
-
     }
 
 }
+
