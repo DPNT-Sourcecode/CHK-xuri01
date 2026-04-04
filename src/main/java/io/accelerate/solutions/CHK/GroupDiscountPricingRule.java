@@ -21,6 +21,11 @@ public class GroupDiscountPricingRule implements PricingRule {
 
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
+
+        if(itemCounts == null){
+            throw new NullPointerException("itemCounts cannot be null");
+        }
+
         List<Integer> prices = extractPrices(itemCounts);
         prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
@@ -74,3 +79,4 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
