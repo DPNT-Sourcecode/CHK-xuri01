@@ -22,22 +22,25 @@ public class GroupDiscountPricingRule implements PricingRule {
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
 
-        if(itemCounts == null){
+        if (itemCounts == null) {
             throw new NullPointerException("itemCounts cannot be null");
         }
 
         //Expand items into a list of SKUs
         List<String> expanded = new ArrayList<>();
-        for(String sku : skus){
+        for (String sku : skus) {
             int count = itemCounts.getOrDefault(sku, 0);
-            for(int i =0; i < count; i++){
+            for (int i = 0; i < count; i++) {
                 expanded.add(sku);
             }
         }
 
-        expanded.sort((a,b) -> unitPrices.get(b) - unitPrices.get(a));
+        expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
 
-        int total
+        int total = 0;
+        int index = 0;
+
+        
 
         List<Integer> prices = extractPrices(itemCounts);
         prices.sort(Comparator.reverseOrder());
@@ -92,6 +95,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
 
 
 
