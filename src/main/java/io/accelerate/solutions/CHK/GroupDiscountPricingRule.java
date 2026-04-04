@@ -47,15 +47,19 @@ public class GroupDiscountPricingRule implements PricingRule {
                 itemCounts.put(sku, itemCounts.get(sku) - 1);
             }
             total += groupPrice;
-            index += 
+            index += groupSize;
+
         }
 
+        return total;
 
-        List<Integer> prices = extractPrices(itemCounts);
+        /*List<Integer> prices = extractPrices(itemCounts);
         prices.sort(Comparator.reverseOrder());
         int total = calculateGroupedTotal(prices);
         consumeItems(itemCounts);
         return total;
+
+         */
     }
 
     private List<Integer> extractPrices(Map<String, Integer> itemCounts) {
@@ -104,3 +108,4 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
+
