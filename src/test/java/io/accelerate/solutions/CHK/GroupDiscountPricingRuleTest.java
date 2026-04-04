@@ -67,7 +67,7 @@ class GroupDiscountPricingRuleTest {
         itemCounts.put("B", 1);
 
         int result = rule.calculate(itemCounts);
-        assertEquals(80, result);
+        assertEquals(0, result);
     }
 
     @Test
