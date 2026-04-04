@@ -35,12 +35,20 @@ public class GroupDiscountPricingRule implements PricingRule {
             }
         }
 
-        //
+        //Sort by price desc (most expensive first)
         expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
 
         int total = 0;
         int index = 0;
 
+        while (index + groupSize <= expanded.size()) {
+            for (int i = 0; i < groupSize; i++) {
+                String sku = expanded.get(index + i);
+                itemCounts.put(sku, itemCounts.get(sku) - 1);
+            }
+            total += groupPrice;
+            index += 
+        }
 
 
         List<Integer> prices = extractPrices(itemCounts);
@@ -96,8 +104,3 @@ public class GroupDiscountPricingRule implements PricingRule {
 
 
 }
-
-
-
-
-
