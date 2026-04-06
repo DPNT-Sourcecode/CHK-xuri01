@@ -27,12 +27,12 @@ public class GroupDiscountPricingRule implements PricingRule {
 
         for(String sku : skus){
             int count = itemCounts.getOrDefault(sku, 0);
-            Integer price = unitPrices.get(sku);
+            Integer skuPrice = unitPrices.get(sku);
 
-            if(price == null) continue;
+            if(skuPrice == null) continue;
 
             for(int i =0; i < count; i++){
-                prices.add(price);
+                prices.add(skuPrice);
             }
 
             //sort desc (critical)
@@ -49,7 +49,12 @@ public class GroupDiscountPricingRule implements PricingRule {
 
             //Add remaining items (FULL PRICE)
             for(int price : prices){
+                total += price;
+            }
 
+            // IMPORTANT: consume all these SKUs
+            for(String sku1: skus){
+                itemCounts.put()
             }
 
         }
@@ -81,6 +86,3 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
-
-
-
