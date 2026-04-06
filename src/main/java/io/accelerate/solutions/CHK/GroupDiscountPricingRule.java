@@ -1,5 +1,6 @@
 package io.accelerate.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,15 @@ public class GroupDiscountPricingRule implements PricingRule {
     public int calculate(Map<String, Integer> itemCounts) {
         if (itemCounts == null) {
             throw new NullPointerException("itemCounts cannot be null");
+        }
+        List<Integer> prices = new ArrayList<>();
+
+        for(String sku : skus){
+            int count = itemCounts.getOrDefault(sku, 0);
+            Integer price = unitPrices.get(sku);
+
+            if(price == null) continue;
+            
         }
 
         int total = 0;
@@ -50,3 +60,4 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
