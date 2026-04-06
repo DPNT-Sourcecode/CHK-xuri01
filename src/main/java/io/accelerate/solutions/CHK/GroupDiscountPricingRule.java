@@ -42,8 +42,14 @@ public class GroupDiscountPricingRule implements PricingRule {
 
             while(prices.size() >= groupSize){
                 for(int i  =0; i<groupSize; i++){
-                    
+                    prices.remove(0);
                 }
+                total += groupPrice;
+            }
+
+            //Add remaining items (FULL PRICE)
+            for(int price : prices){
+
             }
 
         }
@@ -75,5 +81,6 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
 
