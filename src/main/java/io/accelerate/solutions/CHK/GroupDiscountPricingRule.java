@@ -31,6 +31,8 @@ public class GroupDiscountPricingRule implements PricingRule {
             int count = itemCounts.getOrDefault(sku, 0);
             Integer price = unitPrices.get(sku);
 
+            if(count == 0) continue;
+
             if (price == null){
                 throw new NullPointerException("Missing unit price for SKU:  "+ sku);
             };
@@ -67,6 +69,3 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
-
-
-
