@@ -54,9 +54,9 @@ public class GroupDiscountPricingRule implements PricingRule {
 
             // IMPORTANT: consume all these SKUs
             for(String sku1: skus){
-                itemCounts.put()
+                itemCounts.put(sku, 0);
             }
-
+            return total;
         }
 
         int total = 0;
@@ -86,3 +86,4 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
