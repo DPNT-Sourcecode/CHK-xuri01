@@ -30,7 +30,22 @@ public class GroupDiscountPricingRule implements PricingRule {
             Integer price = unitPrices.get(sku);
 
             if(price == null) continue;
-            
+
+            for(int i =0; i < count; i++){
+                prices.add(price);
+            }
+
+            //sort desc (critical)
+            prices.sort((a,b) -> b - a);
+
+            int total = 0;
+
+            while(prices.size() >= groupSize){
+                for(int i  =0; i<groupSize; i++){
+                    
+                }
+            }
+
         }
 
         int total = 0;
@@ -60,4 +75,5 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
