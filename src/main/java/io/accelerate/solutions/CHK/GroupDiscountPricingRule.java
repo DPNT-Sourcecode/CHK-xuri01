@@ -23,67 +23,47 @@ public class GroupDiscountPricingRule implements PricingRule {
         if (itemCounts == null) {
             throw new NullPointerException("itemCounts cannot be null");
         }
+
         List<Integer> prices = new ArrayList<>();
 
-        for(String sku : skus){
+        // Expand all eligible items into price list
+        for (String sku : skus) {
             int count = itemCounts.getOrDefault(sku, 0);
-            Integer skuPrice = unitPrices.get(sku);
+            Integer price = unitPrices.get(sku);
 
-            if(skuPrice == null) continue;
+            if (price == null) continue;
 
-            for(int i =0; i < count; i++){
-                prices.add(skuPrice);
+            for (int i = 0; i < count; i++) {
+                prices.add(price);
             }
-
-            //sort desc (critical)
-            prices.sort((a,b) -> b - a);
-
-            int total = 0;
-
-            while(prices.size() >= groupSize){
-                for(int i  =0; i<groupSize; i++){
-                    prices.remove(0);
-                }
-                total += groupPrice;
-            }
-
-            //Add remaining items (FULL PRICE)
-            for(int price : prices){
-                total += price;
-            }
-
-            // IMPORTANT: consume all these SKUs
-            for(String sku1: skus){
-                itemCounts.put(sku, 0);
-            }
-            return total;
         }
 
+        // Sort DESC (CRITICAL)
+        prices.sort((a, b) -> b - a);
+
         int total = 0;
-        while (true) {
-            List<String> available = skus.stream()
-                    .filter(sku -> itemCounts.getOrDefault(sku, 0) > 0)
-                    .sorted((a, b) -> unitPrices.get(b) - unitPrices.get(a))
-                    .toList();
 
-            if (available.size() < groupSize) {
-                break;
-            }
-
+        // Apply group discount
+        while (prices.size() >= groupSize) {
             for (int i = 0; i < groupSize; i++) {
-                String sku = available.get(i);
-                itemCounts.put(sku, itemCounts.get(sku) - 1);
+                prices.remove(0);
             }
             total += groupPrice;
         }
 
+        // Add remaining items (FULL PRICE)
+        for (int price : prices) {
+            total += price;
+        }
+
+        // IMPORTANT: consume ALL these SKUs
         for (String sku : skus) {
-            int count = itemCounts.getOrDefault(sku, 0);
-            total += count * unitPrices.get(sku);
             itemCounts.put(sku, 0);
         }
+
         return total;
     }
 
 }
+
 
