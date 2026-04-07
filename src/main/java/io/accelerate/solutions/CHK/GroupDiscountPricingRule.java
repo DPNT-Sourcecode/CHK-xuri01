@@ -18,45 +18,52 @@ public class GroupDiscountPricingRule implements PricingRule {
         this.groupPrice = groupPrice;
     }
 
-    private void validateInputs(Map<String, Integer> itemCounts){
-        if(itemCounts == null){
+    private void validateInputs(Map<String, Integer> itemCounts) {
+        if (itemCounts == null) {
             throw new NullPointerException("itemCounts cannot be null");
         }
 
     }
 
-    private List<String> expandItems(Map<String, Integer> itemCounts){
-
+    private void sortByPriceDesc(List<String> expanded) {
+        expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
     }
-    @Override
-    public int calculate(Map<String, Integer> itemCounts) {
-        validateInputs(itemCounts);
-        List<String> expanded = expandItems(itemCounts);
-        sortByPriceDesc(expanded);
-        return applyGroups(expanded, itemCounts);
+
+
+    private List<String> expandItems(Map<String, Integer> itemCounts) {
+        List<String> expanded = new ArrayList<>();
+
+        // Expand items
+        for (String sku : skus) {
+            int count = itemCounts.getOrDefault(sku, 0);
+
+            if (count == 0) continue;
+
+            Integer price = unitPrices.get(sku);
+            if (price == null) {
+                throw new NullPointerException("Missing unit price for SKU: " + sku);
+            }
+
+            for (int i = 0; i < count; i++) {
+                expanded.add(sku);
+            }
+            return expanded;
+        }
+
+        private int applyGroups()
+
+        @Override
+        public int calculate (Map < String, Integer > itemCounts){
+            validateInputs(itemCounts);
+            var expandedItems = expandItems(itemCounts);
+            sortByPriceDesc(expandedItems);
+            return applyGroups(expandedItems, itemCounts);
 
 
             if (itemCounts == null) {
                 throw new NullPointerException("itemCounts cannot be null");
             }
 
-            List<String> expanded = new ArrayList<>();
-
-            // Expand items
-            for (String sku : skus) {
-                int count = itemCounts.getOrDefault(sku, 0);
-
-                if (count == 0) continue;
-
-                Integer price = unitPrices.get(sku);
-                if (price == null) {
-                    throw new NullPointerException("Missing unit price for SKU: " + sku);
-                }
-
-                for (int i = 0; i < count; i++) {
-                    expanded.add(sku);
-                }
-            }
 
             // Sort by price DESC
             expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
@@ -77,5 +84,6 @@ public class GroupDiscountPricingRule implements PricingRule {
             return total;
         }
 
-}
+    }
+
 
