@@ -26,6 +26,25 @@ public class GroupDiscountPricingRule implements PricingRule {
         return applyGroups(expandedItems, itemCounts);
     }
 
-
+    private void validateInputs(Map<String, Integer> itemCounts) {
+        if (itemCounts == null) {
+            throw new NullPointerException("itemCounts cannot be null");
+        }
     }
+
+    private void sortByPriceDesc(List<String> expanded) {
+        expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
+    }
+
+    private void consumeGroup (List < String > expanded,int startIndex, Map<String, Integer > itemCounts){
+        for (int i = 0; i < groupSize; i++) {
+            String sku = expanded.get(startIndex + i);
+            itemCounts.put(sku, itemCounts.get(sku) - 1);
+        }
+    }
+
+    
+
+}
+
 
