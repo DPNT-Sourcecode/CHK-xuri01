@@ -18,6 +18,15 @@ public class GroupDiscountPricingRule implements PricingRule {
         this.groupPrice = groupPrice;
     }
 
+    @Override
+    public int calculate(Map<String, Integer> itemCounts) {
+        validateInputs(itemCounts);
+        var expandedItems = expandItems(itemCounts);
+        sortByPriceDesc(expandedItems);
+        return applyGroups(expandedItems, itemCounts);
+    }
+
+
     private void validateInputs(Map<String, Integer> itemCounts) {
         if (itemCounts == null) {
             throw new NullPointerException("itemCounts cannot be null");
@@ -50,7 +59,7 @@ public class GroupDiscountPricingRule implements PricingRule {
             return expanded;
         }
 
-        private int applyGroups (List < String > expanded, Map < String, Integer > itemCounts){
+        private int applyGroups (List <String> expanded, Map < String, Integer > itemCounts){
             int total = 0;
             int index = 0;
 
@@ -71,14 +80,8 @@ public class GroupDiscountPricingRule implements PricingRule {
         }
     }
 
-    @Override
-    public int calculate(Map<String, Integer> itemCounts) {
-        validateInputs(itemCounts);
-        var expandedItems = expandItems(itemCounts);
-        sortByPriceDesc(expandedItems);
-        return applyGroups(expandedItems, itemCounts);
-    }
 }
+
 
 
 
