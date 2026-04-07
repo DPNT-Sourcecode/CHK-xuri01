@@ -50,11 +50,11 @@ public class GroupDiscountPricingRule implements PricingRule {
             return expanded;
         }
 
-        private int applyGroups(List<String> expanded, Map<String, Integer> itemCounts){
+        private int applyGroups (List < String > expanded, Map < String, Integer > itemCounts){
             int total = 0;
             int index = 0;
 
-            while(index + groupSize <= expanded.size()){
+            while (index + groupSize <= expanded.size()) {
                 consumeGroup(expanded, index, itemCounts);
                 total += groupPrice;
                 index += groupSize;
@@ -64,42 +64,22 @@ public class GroupDiscountPricingRule implements PricingRule {
         }
     }
 
-    private void consumeGroup(List<String> expanded, int startIndex, Map<String, Integer> itemCounts){
-        for(int i =0; i < groupSize)
-    }
-        @Override
-        public int calculate (Map < String, Integer > itemCounts){
-            validateInputs(itemCounts);
-            var expandedItems = expandItems(itemCounts);
-            sortByPriceDesc(expandedItems);
-            return applyGroups(expandedItems, itemCounts);
-
-
-            if (itemCounts == null) {
-                throw new NullPointerException("itemCounts cannot be null");
-            }
-
-
-            // Sort by price DESC
-            expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
-
-            int total = 0;
-            int index = 0;
-
-            // Apply groups ONLY
-            while (index + groupSize <= expanded.size()) {
-                for (int i = 0; i < groupSize; i++) {
-                    String sku = expanded.get(index + i);
-                    itemCounts.put(sku, itemCounts.get(sku) - 1);
-                }
-                total += groupPrice;
-                index += groupSize;
-            }
-
-            return total;
+    private void consumeGroup(List<String> expanded, int startIndex, Map<String, Integer> itemCounts) {
+        for (int i = 0; i < groupSize; i++) {
+            String sku = expanded.get(startIndex + i);
+            itemCounts.put(sku, itemCounts.get(sku) - 1);
         }
-
     }
+
+    @Override
+    public int calculate(Map<String, Integer> itemCounts) {
+        validateInputs(itemCounts);
+        var expandedItems = expandItems(itemCounts);
+        sortByPriceDesc(expandedItems);
+        return applyGroups(expandedItems, itemCounts);
+    }
+}
+
 
 
 
