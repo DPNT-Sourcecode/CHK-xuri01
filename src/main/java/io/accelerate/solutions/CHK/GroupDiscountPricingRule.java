@@ -24,7 +24,7 @@ public class GroupDiscountPricingRule implements PricingRule {
             throw new NullPointerException("itemCounts cannot be null");
         }
 
-        List<Integer> prices = new ArrayList<>();
+        List<Integer> expanded   = new ArrayList<>();
 
         // Expand all eligible items into price list
         for (String sku : skus) {
@@ -69,3 +69,4 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
