@@ -18,8 +18,19 @@ public class GroupDiscountPricingRule implements PricingRule {
         this.groupPrice = groupPrice;
     }
 
+    private void validateInputs(Map<String, Integer> itemCounts){
+        if(itemCounts == null){
+            throw new NullPointerException("itemCounts cannot be null");
+        }
+        
+    }
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
+        validateInputs(itemCounts);
+        List<String> expanded = expandItems(itemCounts);
+        sortByPriceDesc(expanded);
+        return applyGroups(expanded, itemCounts);
+
 
             if (itemCounts == null) {
                 throw new NullPointerException("itemCounts cannot be null");
@@ -63,5 +74,3 @@ public class GroupDiscountPricingRule implements PricingRule {
         }
 
 }
-
-
