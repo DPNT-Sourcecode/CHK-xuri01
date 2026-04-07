@@ -22,7 +22,11 @@ public class GroupDiscountPricingRule implements PricingRule {
         if(itemCounts == null){
             throw new NullPointerException("itemCounts cannot be null");
         }
-        
+
+    }
+
+    private List<String> expandItems(Map<String, Integer> itemCounts){
+
     }
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
@@ -74,3 +78,4 @@ public class GroupDiscountPricingRule implements PricingRule {
         }
 
 }
+
