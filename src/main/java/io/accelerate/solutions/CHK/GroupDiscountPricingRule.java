@@ -59,7 +59,7 @@ public class GroupDiscountPricingRule implements PricingRule {
             return expanded;
         }
 
-        private int applyGroups (List <String> expanded, Map < String, Integer > itemCounts){
+        private int applyGroups (List <String> expanded, Map <String, Integer > itemCounts){
             int total = 0;
             int index = 0;
 
@@ -81,6 +81,7 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
 
 
