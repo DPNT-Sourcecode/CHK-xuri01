@@ -57,7 +57,6 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
     private List<String> expandItems(Map<String, Integer> itemCounts) {
-
         List<String> expanded = new ArrayList<>();
 
         for (String sku : skus) {
@@ -73,12 +72,13 @@ public class GroupDiscountPricingRule implements PricingRule {
             for (int i = 0; i < count; i++) {
                 expanded.add(sku);
             }
-            return expanded;
         }
 
-
-
+        return expanded;
     }
+
+}
+
 
 
 
