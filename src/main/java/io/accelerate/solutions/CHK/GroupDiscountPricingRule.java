@@ -45,7 +45,8 @@ public class GroupDiscountPricingRule implements PricingRule {
 
             for (int i = 0; i < groupSize; i++) {
                 String sku = expanded.get(index + i);
-                itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) - 1);
+                int current = itemCounts.get(sku);
+                itemCounts.put(sku, current - 1);
             }
 
             total += groupPrice;
@@ -77,6 +78,7 @@ private List<String> expandItems(Map<String, Integer> itemCounts) {
 }
 
 }
+
 
 
 
