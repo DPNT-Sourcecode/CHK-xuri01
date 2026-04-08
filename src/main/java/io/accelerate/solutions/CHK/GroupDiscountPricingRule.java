@@ -37,20 +37,30 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
     private int applyGroups(List<String> expanded, Map<String, Integer> itemCounts) {
-
         int total = 0;
-        int index = 0;
 
-        while (index + groupSize <= expanded.size()) {
+        while (true) {
+            int picked = 0;
+            List<String> group = new ArrayList<>();
 
-            for (int i = 0; i < groupSize; i++) {
-                String sku = expanded.get(index + i);
-                int current = itemCounts.get(sku);
-                itemCounts.put(sku, current - 1);
+            for (String sku : expanded) {
+                int count = itemCounts.getOrDefault(sku, 0);
+
+                if (count > 0) {
+                    group.add(sku);
+                    picked++;
+                }
+
+                if (picked == groupSize) break;
+            }
+
+            if (picked < groupSize) break;
+
+            for (String sku : group) {
+                itemCounts.put(sku, itemCounts.get(sku) - 1);
             }
 
             total += groupPrice;
-            index += groupSize;
         }
 
         return total;
@@ -78,6 +88,7 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
 
 
