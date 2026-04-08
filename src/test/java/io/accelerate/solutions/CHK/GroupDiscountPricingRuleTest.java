@@ -88,6 +88,7 @@ class GroupDiscountPricingRuleTest {
                 Map.of("A", 50, "B", 30),
                 2,
                 70);
+        assertEquals(0, rule.calculate(new HashMap<>()));
     }
 
     @Test
