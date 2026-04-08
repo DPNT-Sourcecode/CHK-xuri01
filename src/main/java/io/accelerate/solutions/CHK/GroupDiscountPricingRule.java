@@ -37,74 +37,84 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
     private int applyGroups(List<String> expanded, Map<String, Integer> itemCounts) {
-        int numberOfGroups = calculateNumberOfGroups(expanded);
-        int itemsToConsume = calculateItemsToConsume(numberOfGroups);
 
-        int total = calculateTotalPrice(numberOfGroups);
+        int total = 0;
+        int index = 0;
 
-        consumeItems(expanded, itemCounts, itemsToConsume);
+        while (index + groupSize <= expanded.size()) {
+
+            for (int i = 0; i < groupSize; i++) {
+                String sku = expanded.get(index + i);
+                itemCounts.put(sku, itemCounts.get(sku) - 1);
+            }
+
+            total += groupPrice;
+            index += groupSize;
+        }
 
         return total;
     }
 
-    private int calculateNumberOfGroups(List<String> expanded) {
-        return expanded.size() / groupSize;
+
+private int calculateNumberOfGroups(List<String> expanded) {
+    return expanded.size() / groupSize;
+}
+
+private int calculateItemsToConsume(int numberOfGroups) {
+    return numberOfGroups * groupSize;
+}
+
+private int calculateTotalPrice(int numberOfGroups) {
+    return numberOfGroups * groupPrice;
+}
+
+private void consumeItems(List<String> expanded,
+                          Map<String, Integer> itemCounts,
+                          int itemsToConsume) {
+
+    int removed = 0;
+
+    for (String sku : expanded) {
+        if (removed >= itemsToConsume) break;
+
+        if (hasStock(itemCounts, sku)) {
+            decrement(itemCounts, sku);
+            removed++;
+        }
     }
+}
 
-    private int calculateItemsToConsume(int numberOfGroups) {
-        return numberOfGroups * groupSize;
-    }
+private boolean hasStock(Map<String, Integer> itemCounts, String sku) {
+    return itemCounts.getOrDefault(sku, 0) > 0;
+}
 
-    private int calculateTotalPrice(int numberOfGroups) {
-        return numberOfGroups * groupPrice;
-    }
+private void decrement(Map<String, Integer> itemCounts, String sku) {
+    itemCounts.put(sku, itemCounts.get(sku) - 1);
+}
 
-    private void consumeItems(List<String> expanded,
-                              Map<String, Integer> itemCounts,
-                              int itemsToConsume) {
+private List<String> expandItems(Map<String, Integer> itemCounts) {
+    List<String> expanded = new ArrayList<>();
 
-        int removed = 0;
+    for (String sku : skus) {
+        int count = itemCounts.getOrDefault(sku, 0);
 
-        for (String sku : expanded) {
-            if (removed >= itemsToConsume) break;
+        if (count == 0) continue;
 
-            if (hasStock(itemCounts, sku)) {
-                decrement(itemCounts, sku);
-                removed++;
-            }
+        Integer price = unitPrices.get(sku);
+        if (price == null) {
+            throw new NullPointerException("Missing unit price for SKU: " + sku);
+        }
+
+        for (int i = 0; i < count; i++) {
+            expanded.add(sku);
         }
     }
 
-    private boolean hasStock(Map<String, Integer> itemCounts, String sku) {
-        return itemCounts.getOrDefault(sku, 0) > 0;
-    }
-
-    private void decrement(Map<String, Integer> itemCounts, String sku) {
-        itemCounts.put(sku, itemCounts.get(sku) - 1);
-    }
-
-    private List<String> expandItems(Map<String, Integer> itemCounts) {
-        List<String> expanded = new ArrayList<>();
-
-        for (String sku : skus) {
-            int count = itemCounts.getOrDefault(sku, 0);
-
-            if (count == 0) continue;
-
-            Integer price = unitPrices.get(sku);
-            if (price == null) {
-                throw new NullPointerException("Missing unit price for SKU: " + sku);
-            }
-
-            for (int i = 0; i < count; i++) {
-                expanded.add(sku);
-            }
-        }
-
-        return expanded;
-    }
+    return expanded;
+}
 
 }
+
 
 
 
