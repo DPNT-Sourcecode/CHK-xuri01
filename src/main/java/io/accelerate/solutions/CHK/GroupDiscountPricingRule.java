@@ -45,7 +45,7 @@ public class GroupDiscountPricingRule implements PricingRule {
 
             for (int i = 0; i < groupSize; i++) {
                 String sku = expanded.get(index + i);
-                itemCounts.put(sku, itemCounts.get(sku) - 1);
+                itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) - 1);
             }
 
             total += groupPrice;
@@ -54,43 +54,6 @@ public class GroupDiscountPricingRule implements PricingRule {
 
         return total;
     }
-
-
-private int calculateNumberOfGroups(List<String> expanded) {
-    return expanded.size() / groupSize;
-}
-
-private int calculateItemsToConsume(int numberOfGroups) {
-    return numberOfGroups * groupSize;
-}
-
-private int calculateTotalPrice(int numberOfGroups) {
-    return numberOfGroups * groupPrice;
-}
-
-private void consumeItems(List<String> expanded,
-                          Map<String, Integer> itemCounts,
-                          int itemsToConsume) {
-
-    int removed = 0;
-
-    for (String sku : expanded) {
-        if (removed >= itemsToConsume) break;
-
-        if (hasStock(itemCounts, sku)) {
-            decrement(itemCounts, sku);
-            removed++;
-        }
-    }
-}
-
-private boolean hasStock(Map<String, Integer> itemCounts, String sku) {
-    return itemCounts.getOrDefault(sku, 0) > 0;
-}
-
-private void decrement(Map<String, Integer> itemCounts, String sku) {
-    itemCounts.put(sku, itemCounts.get(sku) - 1);
-}
 
 private List<String> expandItems(Map<String, Integer> itemCounts) {
     List<String> expanded = new ArrayList<>();
@@ -114,6 +77,7 @@ private List<String> expandItems(Map<String, Integer> itemCounts) {
 }
 
 }
+
 
 
 
