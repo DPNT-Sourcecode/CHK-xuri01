@@ -110,7 +110,7 @@ class GroupDiscountPricingRuleTest {
     void shouldHandleLargeQuantitiesEfficiently() {
         var rule = new GroupDiscountPricingRule(
                 List.of("A", "B"),
-                Map.of("A", 10),
+                Map.of("A", 10, "B", 10),
                 5,
                 40
         );
