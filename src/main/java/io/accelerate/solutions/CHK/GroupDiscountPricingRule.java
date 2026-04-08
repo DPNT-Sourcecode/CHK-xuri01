@@ -56,8 +56,14 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
     private int calculateItemsToConsume(int numberOfGroups){
-        
+        return numberOfGroups * groupSize;
     }
+
+    private int calculateITotalPrice(int numberOfGroups){
+        return numberOfGroups * groupPrice;
+    }
+
+    private void consumeItems(List<String>)
 
 
     private List<String> expandItems(Map<String, Integer> itemCounts) {
@@ -82,8 +88,6 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
-
-
 
 
 
