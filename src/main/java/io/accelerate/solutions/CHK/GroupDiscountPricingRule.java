@@ -44,16 +44,9 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
     private int applyGroups(List<String> expanded, Map<String, Integer> itemCounts) {
-        int total = 0;
-        int index = 0;
-
-        while (index + groupSize <= expanded.size()) {
-            consumeGroup(expanded, index, itemCounts);
-            total += groupPrice;
-            index += groupSize;
-        }
-
-        return total;
+        int numberOfGroups = calculateNumberOfGroups(expanded);
+        int itemsToConsume = calculateItemsToConsume(numberOfGroups);
+        
     }
 
     private List<String> expandItems(Map<String, Integer> itemCounts) {
@@ -78,6 +71,7 @@ public class GroupDiscountPricingRule implements PricingRule {
     }
 
 }
+
 
 
 
