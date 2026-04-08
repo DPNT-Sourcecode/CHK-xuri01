@@ -67,12 +67,14 @@ public class GroupDiscountPricingRule implements PricingRule {
     private List<String> expandItems(Map<String, Integer> itemCounts) {
         List<String> expanded = new ArrayList<>();
 
-        for (String sku : skus) {
-            int count = itemCounts.getOrDefault(sku, 0);
+        for (Map.Entry<String, Integer> entry : itemCounts.entrySet()) {
+            String sku = entry.getKey();
 
-            if (count == 0) continue;
+            if (!skus.contains(sku)) continue;
 
+            int count = entry.getValue();
             Integer price = unitPrices.get(sku);
+
             if (price == null) {
                 throw new NullPointerException("Missing unit price for SKU: " + sku);
             }
@@ -84,8 +86,8 @@ public class GroupDiscountPricingRule implements PricingRule {
 
         return expanded;
     }
-
 }
+
 
 
 
