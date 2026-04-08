@@ -23,10 +23,10 @@ public class CheckoutSolution {
             new GroupDiscountPricingRule(
                     List.of("S", "T", "X", "Y", "Z"),
                     Map.of(
-                            "S", 30,
+                            "S", 20,
                             "T", 20,
-                            "X", 90,
-                            "Y", 10,
+                            "X", 17,
+                            "Y", 20,
                             "Z", 50),
                     3,
                     45
