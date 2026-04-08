@@ -27,7 +27,7 @@ public class CheckoutSolution {
                             "T", 20,
                             "X", 17,
                             "Y", 20,
-                            "Z", 50),
+                            "Z", 21),
                     3,
                     45
             ),
@@ -110,3 +110,4 @@ public class CheckoutSolution {
 
 
 }
+
