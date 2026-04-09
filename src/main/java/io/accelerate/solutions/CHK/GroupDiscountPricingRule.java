@@ -20,67 +20,68 @@ public class GroupDiscountPricingRule implements PricingRule {
 
     @Override
     public int calculate(Map<String, Integer> itemCounts) {
-        validateInputs(itemCounts);
-        var expandedItems = expandItems(itemCounts);
-        sortByPriceDesc(expandedItems);
-        return applyGroups(expandedItems, itemCounts);
+        List<String> items = expandGroupItems(itemCounts);
+        sortByPriceDesc(items);
+
+        int total = applyGroupDiscounts(items, itemCounts);
+        total += priceRemainingItems(itemCounts);
+
+        return total;
     }
 
-    private void validateInputs(Map<String, Integer> itemCounts) {
-        if (itemCounts == null) {
-            throw new NullPointerException("itemCounts cannot be null");
-        }
-    }
+    private List<String> expandGroupItems(Map<String, Integer> itemCounts) {
+        List<String> items = new ArrayList<>();
 
-    private void sortByPriceDesc(List<String> expanded) {
-        expanded.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
-    }
-
-    private int applyGroups(List<String> expanded, Map<String, Integer> itemCounts) {
-
-        int total = 0;
-
-        while (true) {
-            expanded = expandItems(itemCounts);
-
-            if (expanded.size() < groupSize) break;
-
-            sortByPriceDesc(expanded);
-
-            for (int i = 0; i < groupSize; i++) {
-                String sku = expanded.get(i);
-                itemCounts.put(sku, itemCounts.get(sku) - 1);
+        for (String sku : skus) {
+            int count = itemCounts.getOrDefault(sku, 0);
+            for (int i = 0; i < count; i++) {
+                items.add(sku);
             }
+        }
 
+        return items;
+    }
+
+    private void sortByPriceDesc(List<String> items) {
+        items.sort((a, b) -> unitPrices.get(b) - unitPrices.get(a));
+    }
+
+    private int applyGroupDiscounts(List<String> items, Map<String, Integer> itemCounts) {
+        int total = 0;
+        int index = 0;
+
+        while (index + groupSize <= items.size()) {
+            consumeGroup(items, index, itemCounts);
             total += groupPrice;
+            index += groupSize;
         }
 
         return total;
     }
 
-    private List<String> expandItems(Map<String, Integer> itemCounts) {
-        List<String> expanded = new ArrayList<>();
+    private void consumeGroup(List<String> items, int startIndex, Map<String, Integer> itemCounts) {
+        for (int i = 0; i < groupSize; i++) {
+            String sku = items.get(startIndex + i);
+            itemCounts.put(sku, itemCounts.get(sku) - 1);
+        }
+    }
 
-        for (Map.Entry<String, Integer> entry : itemCounts.entrySet()) {
-            String sku = entry.getKey();
+    private int priceRemainingItems(Map<String, Integer> itemCounts) {
+        int total = 0;
 
-            if (!skus.contains(sku)) continue;
+        for (String sku : skus) {
+            int remaining = itemCounts.getOrDefault(sku, 0);
 
-            int count = entry.getValue();
-            Integer price = unitPrices.get(sku);
-
-            if (price == null) {
-                throw new NullPointerException("Missing unit price for SKU: " + sku);
-            }
-
-            for (int i = 0; i < count; i++) {
-                expanded.add(sku);
+            if (remaining > 0) {
+                total += remaining * unitPrices.get(sku);
+                itemCounts.put(sku, 0); // consume
             }
         }
 
-        return expanded;
+        return total;
     }
 }
+
 
 
 
