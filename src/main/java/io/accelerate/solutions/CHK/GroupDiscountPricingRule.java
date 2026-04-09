@@ -24,7 +24,6 @@ public class GroupDiscountPricingRule implements PricingRule {
         sortByPriceDesc(items);
 
         int total = applyGroupDiscounts(items, itemCounts);
-        total += priceRemainingItems(itemCounts);
 
         return total;
     }
@@ -81,6 +80,7 @@ public class GroupDiscountPricingRule implements PricingRule {
         return total;
     }
 }
+
 
 
 
