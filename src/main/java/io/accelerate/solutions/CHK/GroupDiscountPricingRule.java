@@ -65,21 +65,8 @@ public class GroupDiscountPricingRule implements PricingRule {
         }
     }
 
-    private int priceRemainingItems(Map<String, Integer> itemCounts) {
-        int total = 0;
-
-        for (String sku : skus) {
-            int remaining = itemCounts.getOrDefault(sku, 0);
-
-            if (remaining > 0) {
-                total += remaining * unitPrices.get(sku);
-                itemCounts.put(sku, 0); // consume
-            }
-        }
-
-        return total;
-    }
 }
+
 
 
 
