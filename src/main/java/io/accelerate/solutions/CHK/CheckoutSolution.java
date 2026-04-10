@@ -27,8 +27,21 @@ public class CheckoutSolution {
             new MultiBuyPricingRule("P", 50, Map.of(5, 200)),
             new MultiBuyPricingRule("Q", 30, Map.of(3, 80)),
             new MultiBuyPricingRule("V", 50, Map.of(3, 130, 2, 90)),
+
             new BuyNGetOneFreeSameSkuPricingRule("F", 10, 3),
             new BuyNGetOneFreeSameSkuPricingRule("U", 40, 4),
+
+            new GroupDiscountPricingRule(
+                    List.of("S", "T", "X", "Y", "Z"),
+                    Map.of(
+                            "S", 20,
+                            "T", 20,
+                            "X", 17,
+                            "Y", 20,
+                            "Z", 21),
+                    3,
+                    45
+            ),
 
             new DefaultPricingRule("C", 20),
             new DefaultPricingRule("D", 15),
@@ -47,21 +60,9 @@ public class CheckoutSolution {
             new DefaultPricingRule("T", 20),
             new DefaultPricingRule("X", 17),
             new DefaultPricingRule("Y", 20),
-            new DefaultPricingRule("Z", 21),
-
-            new GroupDiscountPricingRule(
-                    List.of("S", "T", "X", "Y", "Z"),
-                    Map.of(
-                            "S", 20,
-                            "T", 20,
-                            "X", 17,
-                            "Y", 20,
-                            "Z", 21),
-                    3,
-                    45
-            )
-
+            new DefaultPricingRule("Z", 21)
     );
+
 
     public Integer checkout(String items) {
         if (isEmpty(items)) return 0;
